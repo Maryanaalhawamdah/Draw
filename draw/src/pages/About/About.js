@@ -13,10 +13,10 @@ const About = () => {
       <Breadcrumbs title="About" prevLocation={prevLocation} />
       <div className="pb-10">
         <h1 className="max-w-[600px] text-base text-lightText mb-2">
-          <span className="text-primeColor font-semibold text-lg">Orebi</span>{" "}
-          is one of the world's leading ecommerce brands and is internationally
-          recognized for celebrating the essence of classic Worldwide cool
-          looking style.
+          <span className="text-primeColor font-semibold text-lg">Magic Art</span>{" "}
+          Is a virtual oasis for art enthusiasts and creators alike. 
+            Our platform is dedicated to celebrating the beauty, diversity, and creativity of 
+            the art world.
         </h1>
         <Link to="/shop">
           <button className="w-52 h-10 bg-primeColor text-white hover:bg-black duration-300">
