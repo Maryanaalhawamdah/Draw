@@ -16,38 +16,38 @@ const BestSellers = () => {
         <Product
           _id="1011"
           img={bestSellerOne}
-          productName="Flower Base"
+          productName="Marker Color"
           price="35.00"
           color="Blank and White"
           badge={true}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="A set of watercolors that contains all the colors you need. An integrated set that will no longer be confused in combining colors to reach what you want.."
         />
         <Product
           _id="1012"
           img={bestSellerTwo}
-          productName="New Backpack"
+          productName="Holder Tools"
           price="180.00"
           color="Gray"
           badge={false}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="It consists of a tool holder and a complete set of drawing tools you need. Everything you need is at your disposal."
         />
         <Product
           _id="1013"
           img={bestSellerThree}
-          productName="Household materials"
+          productName="Canvase Panels"
           price="25.00"
           color="Mixed"
           badge={true}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="Paintings of multiple sizes and shapes. You will not need to modify your drawing to fit the size of the painting. We have brought you all sizes and measurements and the best materials."
         />
         <Product
           _id="1014"
           img={bestSellerFour}
-          productName="Travel Bag"
-          price="220.00"
-          color="Black"
+          productName="ًWhite Brushes"
+          price="100.00"
+          color="ًWhite"
           badge={false}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="A group of various white brushes of all sizes and shapes that will break all boundaries in your drawing. What you need you will find at your fingertips."
         />
       </div>
     </div>

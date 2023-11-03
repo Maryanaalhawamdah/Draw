@@ -26,6 +26,11 @@ export const navBarList = [
     link: "/shop",
   },
   {
+    _id: 1002,
+    title: "Artist",
+    link: "/artist",
+  },
+  {
     _id: 1003,
     title: "About",
     link: "/about",
