@@ -1,0 +1,5 @@
+.card{width: 60%;margin: 0 auto;margin-bottom: 3%;}
+.show-btn{background-color: rgb(255, 163, 133);height: 60px;border-radius: 10%;margin-right: 3%;width: 15%;}
+.show-btn:hover{background-color: black;color:aliceblue}
+.contact-btn{background-color: rgb(255, 163, 133);height: 60px;border-radius: 10%;margin-right: 3%;width: 15%;}
+.contact-btn:hover{background-color: black;color:aliceblue}

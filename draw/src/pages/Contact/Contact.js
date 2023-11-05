@@ -69,6 +69,8 @@ const Contact = () => {
       {successMsg ? (
         <p className="pb-20 w-96 font-medium text-green-500">{successMsg}</p>
       ) : (
+        <div className="flex flex-wrap">
+        <div className="w-1/2"></div>
         <form className="pb-20">
           <h1 className="font-titleFont font-semibold text-3xl">
             Fill up a Form
@@ -138,8 +140,19 @@ const Contact = () => {
             </button>
           </div>
         </form>
+        </div>
+        
       )}
-    </div>
+       <div className="w-1/2">
+          <img
+            src="/images/sale/saleImgOne" 
+            alt="Contact Image"
+            className="max-w-full"
+          />
+        </div>
+      </div>
+    
+    
   );
 };
 
