@@ -24,6 +24,7 @@ import ProductDetails from "./pages/ProductDetails/ProductDetails";
 import Shop from "./pages/Shop/Shop";
 import Artist from "./pages/Artist/artist";
 import NotFound from "./pages/not found/error";
+import Paints from "./pages/Paints/paints";
 const Layout = () => {
   return (
     <div>
@@ -49,6 +50,7 @@ const router = createBrowserRouter(
         <Route path="/journal" element={<Journal />}></Route>
         <Route path="/artist" element={<Artist />}></Route>
         <Route path="*" element={<NotFound/>} />
+        <Route path="/paints" element={<Paints/>} />
         {/* ==================== Header Navlink End here ===================== */}
         <Route path="/offer" element={<Offer />}></Route>
         <Route path="/product/:_id" element={<ProductDetails />}></Route>

@@ -26,10 +26,10 @@ const Artist = () => {
               <img src={item.image} alt="artist" />
             </div>
             <div className="card-body">
-              <h5 className="card-title">{item.fname} {item.lname}</h5>
-              <p className="card-text">With supporting text below as a natural lead-in to additional content.</p>
-             <Link to=''><button className='show-btn'>show paints</button></Link>
-             <Link to='/Contact/Contact.js'><button className='contact-btn'>Contact </button></Link>
+              <h2 className="card-title">{item.fname} {item.lname}</h2>
+              <p className="card-text">Drawing requires deep thinking, intense concentration, and extreme ingenuity. So that the painter can draw his idea perfectly,Drawing is the embodiment of imaginary meanings and putting them into reality.</p>
+             <Link to='/paints'><button className='show-btn'>show paints</button></Link>
+             <Link to=''><button className='contact-btn'>Contact </button></Link>
              
             </div>
           </div>
