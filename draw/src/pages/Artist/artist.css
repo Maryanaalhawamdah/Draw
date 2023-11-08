@@ -1,8 +1,10 @@
 .card{width: 60%;margin: 0 auto;margin-bottom: 3%;margin-top: 3% ;padding: 3%    ;border: 1px solid #F1EAFF;border-radius: 7%   ;background-color: #FFFBF5;}
-.show-btn{background-color:#CE5A67;height: 60px;border-radius: 10%;margin-right: 3%;width: 15%;}
+.show-btn{background-color:#CE5A67;height: 60px;border-radius: 10%;margin-left: 30%;width: 35%;}
 .show-btn:hover{background-color: black;color:aliceblue}
-.contact-btn{background-color: #CE5A67 ;height: 60px;border-radius: 10%;margin-right: 3%;width: 15%;}
+.contact-btn{background-color: #CE5A67 ;height: 60px;border-radius: 10%;width: 35%;margin-left: 10%;}
 .contact-btn:hover{background-color: black;color:aliceblue}
 h2{
-    font-size: 4vw;
+    font-size: 2vw;
 }
+
+.artists { width: 80%;height: 250px;margin: auto;}

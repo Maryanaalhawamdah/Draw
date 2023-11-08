@@ -18,24 +18,38 @@ const Artist = () => {
     }, []);
   
     return (
-      <div>
-       
-        {items.map((item, index) => (
-          <div key={index} className="card text-center">
-            <div className="card-header">
-              <img src={item.image} alt="artist" />
+      <div className="w-full relative group flex flex-wrap">
+      {items.map((item, index) => (
+        <div key={index} className="card mb-3" style={{ maxWidth: '540px' }}>
+          <div className="row no-gutters">
+            <div className="col-md-4">
+              <img src={`/assets/${item.image}`} alt={item.name} className="artists"/>
             </div>
-            <div className="card-body">
-              <h2 className="card-title">{item.fname} {item.lname}</h2>
-              <p className="card-text">Drawing requires deep thinking, intense concentration, and extreme ingenuity. So that the painter can draw his idea perfectly,Drawing is the embodiment of imaginary meanings and putting them into reality.</p>
-             <Link to='/paints'><button className='show-btn'>show paints</button></Link>
-             <Link to=''><button className='contact-btn'>Contact </button></Link>
-             
+            <br/>
+            <div className="col-md-8">
+              <div className="card-body">
+                <h2 className="card-title">{item.fname} {item.lname} </h2>
+                <p className="card-text">
+                  Drawing is the embodiment of imaginary meanings and putting
+                  them into reality. Drawing requires deep thinking, intense
+                  concentration, and extreme ingenuity. So that the painter can
+                  draw his idea perfectly.
+                </p>
+                <p className="card-text">
+                  <small className="text-muted"></small>
+                </p>
+              </div>
             </div>
           </div>
-        ))}
+          <br/>
+          <Link to='/paints'><button className='show-btn'>Show Paints</button></Link>
+          
+           
+        </div>
        
-      </div>
+      ))}
+    </div>
+    
     );
   };
   

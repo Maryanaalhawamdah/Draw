@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import ReactPaginate from "react-paginate";
 import Product from "../../home/Products/Product";
 import { paginationItems } from "../../../constants";
+import axios from "axios"; 
 
 const items = paginationItems;
 function Items({ currentItems }) {

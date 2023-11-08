@@ -11,17 +11,18 @@ if(isset($_POST)){
     $data = file_get_contents("php://input");
     $user = json_decode($data, true);
 
-    if(isset($user['fname']) && isset($user['lname']) && isset($user['email']) && isset($user['password']) && isset($user['address']) && isset($user['phone'])) {
-        $fname = $user['fname'];
-        $lname = $user['lname'];
-        $email = $user['email'];
-        $password = $user['password'];
-        $address = $user['address'];
-        $phone = $user['phone'];
+    if(isset($user['username'])  && isset($user['email']) && isset($user['password'])&& isset($user['dob'])&& isset($user['phone'] && isset($user['address'])&& isset($user['isAdmin'] ))) {
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+        $password = password_hash($_POST['password'], PASSWORD_BCRYPT);
+        $dob = $_POST['dob'];
+        $phone=$_POST['phone'];
+        $address=$_POST['address'];
+        $image=$_POST['image'];
         $isAdmin = 0;
 
-        $sql = "INSERT INTO customer (fname, lname, email, password, address, phone, isAdmin)
-        VALUES ('$fname', '$lname', '$email', '$password', '$address', '$phone', '$isAdmin')";
+        $sql = "INSERT INTO customer (username, email, password,dob,phone, address,image,  isAdmin)
+        VALUES ('$username',  '$email', '$password','$dob' , '$phone', '$address', '$image' , '$isAdmin')";
 
         // Prepare and execute the SQL statement
         $stmt = $conn->prepare($sql);
