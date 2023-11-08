@@ -25,6 +25,8 @@ import Shop from "./pages/Shop/Shop";
 import Artist from "./pages/Artist/artist";
 import NotFound from "./pages/not found/error";
 import Paints from "./pages/Paints/paints";
+import AHome from './Admin/adminHome/ahome/Home';
+
 const Layout = () => {
   return (
     <div>
@@ -59,6 +61,7 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
+      <Route path="/ahome" element={<AHome/>}>  </Route>
     </Route>
   )
 );
