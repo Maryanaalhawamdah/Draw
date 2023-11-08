@@ -26,8 +26,10 @@ import Artist from "./pages/Artist/artist";
 import NotFound from "./pages/not found/error";
 import Paints from "./pages/Paints/paints";
 import AHome from './Admin/adminHome/ahome/Home';
-
-const Layout = () => {
+import AProducts from "./Admin/Product/get";
+import APedit from "./Admin/Product/edit";
+import APdelete from "./Admin/Product/delete";
+ const Layout = () => {
   return (
     <div>
       <Header />
@@ -62,6 +64,9 @@ const router = createBrowserRouter(
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
       <Route path="/ahome" element={<AHome/>}>  </Route>
+      <Route path="/apget" element={<AProducts/>}>  </Route>
+      <Route path="/apedit" element={<APedit/>}>  </Route>
+      <Route path="/apdelete" element={<APdelete/>}>  </Route>
     </Route>
   )
 );

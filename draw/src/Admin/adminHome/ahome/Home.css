@@ -453,4 +453,32 @@ body {
       display: none;
     }
   }
+  .main-container {
+    display: flex;
+    align-items: flex-start; /* Align items at the top */
+    justify-content: flex-start; /* Align items at the start */
+    padding: 20px; /* Add padding as needed */
+  }
+  
+  .sidebar {
+    width: 250px;
+    position: fixed; /* Set the sidebar to a fixed position */
+    top: 0; /* Adjust the top position as needed */
+    left: 0; /* Set the sidebar on the left side of the screen */
+    height: 100%; /* Make it take the full height of the screen */
+    background-color: #f0f0f0; /* Add background color as needed */
+    /* Additional styles for the sidebar */
+  }
+  
+  .content {
+    margin-left: 250px; /* Adjust the margin to match the width of the sidebar */
+  padding: 10px;
+  /* Additional styles for the content area */
+  }
+.card {
+  width: 100%;
+}
+  
+  /* Add your styling for main-title, main-cards, and other elements as needed */
+  
   

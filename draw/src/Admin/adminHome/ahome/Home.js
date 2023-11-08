@@ -4,17 +4,13 @@ import
  from 'react-icons/bs';
  import Sidebar from './Sidebar';
  import './Home.css';
- import Header from './Headeer';
  import 
  { BarChart, Bar, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer, LineChart, Line } 
  from 'recharts';
  import React, { useState, useEffect } from "react";
 import axios from 'axios';
-// import Footer from './Footer';
+
 import 'bootstrap/dist/css/bootstrap.css';
-import { FaPlus } from "react-icons/fa";
-import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-import { useParams, useNavigate } from 'react-router-dom';
 
 
 
@@ -148,8 +144,11 @@ console.log(`Number of IDs in data: ${idOrderUsers}`);
 
   return (
     <main className='main-container'>
-       <Header/> 
-       <Sidebar/>
+      
+      <div className='sidebar'>
+    <Sidebar />
+  </div>
+  <div className='content'>
         <div className='main-title'>
             <h3>DASHBOARD</h3>
         </div>
@@ -189,7 +188,7 @@ console.log(`Number of IDs in data: ${idOrderUsers}`);
       <LineChart /> 
     </div>
         </div>
-
+</div>
        <section>
       {/* <Footer/> */}
       </section>
