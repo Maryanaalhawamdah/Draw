@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 function Add() {
     const navigate = useNavigate();
 
@@ -54,9 +54,14 @@ function Add() {
     }
 
     return (
+        <main className='main-container'>
+      
+        <div className='sidebar'>
+      <Sidebar />
+    </div>
         <div id="editPmaindiv">
             <form id="form" onSubmit={submitData}>
-                <table className="table table-bordered">
+                <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
                     <thead>
                         <tr class="table-dark">
                             <th>Name</th>
@@ -83,6 +88,7 @@ function Add() {
                 </table>
             </form>
         </div>
+        </main>
     );
 }
 

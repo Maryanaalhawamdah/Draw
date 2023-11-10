@@ -29,6 +29,9 @@ import AHome from './Admin/adminHome/ahome/Home';
 import AProducts from "./Admin/Product/get";
 import APedit from "./Admin/Product/edit";
 import APdelete from "./Admin/Product/delete";
+import AUser from "./Admin/Users/get";
+import ADuser from "./Admin/Users/add";
+import ADuedit from "./Admin/Users/edit";
  const Layout = () => {
   return (
     <div>
@@ -67,7 +70,12 @@ const router = createBrowserRouter(
       <Route path="/apget" element={<AProducts/>}>  </Route>
       <Route path="/apedit" element={<APedit/>}>  </Route>
       <Route path="/apdelete" element={<APdelete/>}>  </Route>
-    </Route>
+      <Route path="/auget" element={<AUser/>}>  </Route>
+      <Route path="/aduser" element={<ADuser/>}>  </Route>
+      <Route path="/aduedit" element={<ADuedit/>}>  </Route>
+      
+    </Route>,
+   
   )
 );
 

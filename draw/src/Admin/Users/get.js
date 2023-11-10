@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 function GetUser() {
   const [data, setData] = useState([]);
 
@@ -34,9 +34,14 @@ function GetUser() {
  
 
   return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
     <div id="mainUdiv">
     
-      <table className="table table-bordered">
+      <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
         <thead>
         <tr class="table-dark">
             <th>Id</th>
@@ -53,13 +58,14 @@ function GetUser() {
           {data.map(item => (
             <tr key={item.id}>
               <td class="table-secondary">{item.id}</td>
-              <td class="table-danger">{item.fname}</td>
-              <td class="table-success">{item.lname}</td>
-              <td class="table-danger">{item.email}</td>
-              <td class="table-info">{item.address}</td>
-              <td class="table-primary">{item.phone}</td>
+              <td class="table-danger">{item.username}</td>
+              <td class="table-success">{item.email}</td>
+              <td class="table-danger">{item.dob}</td>
+              <td class="table-info">{item.phone}</td>
+              <td class="table-primary">{item.address}</td>
+              <td class="table-success"><img src={`/assets/${item.image}`} alt={item.name} width={"70px"}/></td>
               <td class="table-light">
-                <Link to={`/edit/${item.id}`}>
+                <Link to={`/aduedit/${item.id}`}>
                   <button
                     type="button"
                     id="edit"
@@ -82,7 +88,7 @@ function GetUser() {
         
       </table>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/add"> <button class="btn btn-dark me-md-2" type="button">
+        <Link to="/aduser"> <button class="btn btn-dark me-md-2" type="button">
           <FaPlus />  <i className="fa fa-plus"></i> Add New
         </button></Link>
       </div>
@@ -90,6 +96,7 @@ function GetUser() {
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New
                                     </button></Link>  */}
     </div>
+    </main>
   );
 }
 

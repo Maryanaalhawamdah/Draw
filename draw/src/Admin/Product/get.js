@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import {  Link } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 
 
@@ -39,9 +39,14 @@ function GetProduct() {
 
   
   return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
     <div id="mainPdiv">
       
-      <table className="table table-bordered">
+      <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
@@ -58,7 +63,7 @@ function GetProduct() {
 
               <td class="table-secondary">{item.id}</td>
               <td class="table-danger">{item.name}</td>
-              <td class="table-success"> <img src={'/'+item.image} alt={item.name} width={"90px"}/></td>
+              <td class="table-success"> <img src={`/assets/${item.image}`} alt={item.name} width={"70px"}/></td>
               <td class="table-info">{item.description}</td>
               <td class="table-primary">{item.price}</td>
               
@@ -96,6 +101,7 @@ function GetProduct() {
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New
                                     </button></Link>  */}
     </div>
+    </main>
   );
 }
 

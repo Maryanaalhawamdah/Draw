@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 function Edit() {
 
@@ -16,25 +16,26 @@ function Edit() {
    
 
     useEffect(() => {
-        axios.get('http://localhost/Art-Magic/connection/users/get.php')
+        axios.get(`http://localhost/DRAW/connection/users/getuser.php?id=${id}`)
             .then(response => {
                 console.log(response); 
                 setData(response.data);
             })
             .catch(error => {
-                console.error('Error:', error);
+                console.error('Error fetching user data:', error);
+               
             });
-    }, []);
-
+    }, [id]);
+    
 
     const [inputs , setInputs ] = useState({});
 
-        const changed = (e) =>{
-        const name  = e.target.name;
+    const changed = (e) => {
+        const name = e.target.name;
         const value = e.target.value;
-        setInputs(values => ({...values , [name]: value}));
-    }
-
+        setInputs((values) => ({ ...values, [name]: value }));
+    };
+    
     const submit = (e) =>{
         e.preventDefault();
 
@@ -43,7 +44,7 @@ function Edit() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/users');
+                navigate('/aduedit');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -58,17 +59,23 @@ function Edit() {
    
    // ...
 return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
     <div id="editUmaindiv">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered">
+            <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
                 <thead>
                 <tr class="table-dark">
-            <th>Id</th>
-            <th>Fname</th>
-            <th>Lname</th>
+                <th>Id</th>
+            <th>Username</th>            
             <th>Email</th>
-            <th>Address</th>
+            <th>Dob</th>            
             <th>Phone</th>
+            <th>Address</th>
+            <th>Image</th>
             <th>Action</th>
                     </tr>
                 </thead>
@@ -78,13 +85,13 @@ return (
                 
                     
                     <tr>
-                    <td class="table-secondary"><input type="text" value="" name="id" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required placeholder="" name="fname" onChange={changed} /></td>
-                        <td class="table-success"><input type="text" required placeholder="" name="lname" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required placeholder="" name="email" onChange={changed} /></td>
-                        <td class="table-info"><input type="text" required placeholder="" name="phone" onChange={changed} /></td>
-                        <td class="table-primary"><input type="text" required placeholder="" name="address" onChange={changed} /></td>
-
+                    <td class="table-secondary"><input type="text" value={data.id} name="id" onChange={changed} /></td>
+                        <td class="table-danger"><input type="text" required value={data.name || ''} name="username" onChange={changed} /></td>
+                        <td class="table-success"><input type="text" required value={data.email || ''} name="email" onChange={changed} /></td>
+                        <td class="table-danger"><input type="text" required value={data.dob || ''} name="dob" onChange={changed} /></td>
+                        <td class="table-info"><input type="text" required value={data.phone || ''} name="phone" onChange={changed} /></td>
+                        <td class="table-primary"><input type="text" required value={data.address || ''} name="address" onChange={changed} /></td>
+                        <td class="table-primary"><input type="text" required value={data.image || ''} name="image" onChange={changed} /></td>
 
                         <td class="table-light">
                             <button type="submit" className="btn btn-info add-new">Save</button>
@@ -95,6 +102,7 @@ return (
             </table>
         </form>
     </div>
+    </main>
 );
 // ...
 

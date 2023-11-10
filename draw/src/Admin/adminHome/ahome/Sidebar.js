@@ -32,7 +32,7 @@ function Sidebar({openSidebarToggle, OpenSidebar}) {
                 </a>
             </li>
             <li className='sidebar-list-item'>
-                <a href="/users">
+                <a href="/auget">
                     <BsPeopleFill className='icon'/> Users
                 </a>
             </li>
