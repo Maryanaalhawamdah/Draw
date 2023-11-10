@@ -29,8 +29,8 @@ const Product = (props) => {
   return (
     <div className="w-full relative group">
       <div className="max-w-80 max-h-80 relative overflow-y-hidden ">
-        <div>
-          <Image className="w-full h-full" imgSrc={props.img} />
+        <div style={{height:'300px'}}>
+          <Image className="w-full " imgSrc={props.img}  />
         </div>
         <div className="absolute top-6 left-8">
           {props.badge && <Badge text="New" />}

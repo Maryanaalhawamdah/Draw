@@ -6,7 +6,7 @@ const Payment = () => {
   return (
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Payment gateway" />
-      <div className="pb-10">
+      <div className="pb-10" style={{color:'black',fontSize:'200%'}}>
         <p>Thank You for Shoping with use we will contact you .</p>
         <Link to="/">
           <button className="w-52 h-10 bg-primeColor text-white text-lg mt-4 hover:bg-black duration-300">

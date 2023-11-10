@@ -74,7 +74,7 @@ const Contact = () => {
         </div>
         <div className="w-1/2">
           <form className="pb-20">
-            <h1 className="font-titleFont font-semibold text-3xl">
+            <h1 className="font-titleFont font-semibold text-3xl" style={{color:'black'}}>
               Fill up a Form
             </h1>
             <div className="w-[500px] h-auto py-6 flex flex-col gap-6">

@@ -12,8 +12,8 @@ const About = () => {
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="About" prevLocation={prevLocation} />
       <div className="pb-10">
-        <h1 className="max-w-[600px] text-base text-lightText mb-2">
-          <span className="text-primeColor font-semibold text-lg">Magic Art</span>{" "}
+        <h1 className="max-w-[600px] text-base text-lightText mb-2" style={{fontSize:'150%'}}>
+          <span className="text-primeColor font-semibold text-lg" style={{fontSize:'150%'}}>Magic Art</span>{" "}
           Is a virtual oasis for art enthusiasts and creators alike. 
             Our platform is dedicated to celebrating the beauty, diversity, and creativity of 
             the art world.

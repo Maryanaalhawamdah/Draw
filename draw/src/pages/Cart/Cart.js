@@ -33,7 +33,7 @@ const Cart = () => {
     <div className="max-w-container mx-auto px-4">
       <Breadcrumbs title="Cart" />
       {products.length > 0 ? (
-        <div className="pb-20">
+        <div className="pb-20" style={{color:"black"}}>
           <div className="w-full h-20 bg-[#F5F7F7] text-primeColor hidden lgl:grid grid-cols-5 place-content-center px-6 text-lg font-titleFont font-semibold">
             <h3 className="col-span-2">Product</h3>
             <h3>Price</h3>
