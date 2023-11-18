@@ -42,7 +42,7 @@ function Edit() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/categories');
+                navigate('/acategory');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -55,7 +55,7 @@ function Edit() {
 
    
    
-   // ...
+  
 return (
     <main className='main-container'>
       
@@ -91,7 +91,7 @@ return (
     </div>
     </main>
 );
-// ...
+
 
 }
 
