@@ -3,7 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 function GetUser() {
   const [data, setData] = useState([]);
 
@@ -34,11 +34,16 @@ function GetUser() {
  
 
   return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
     <div id="mainUdiv">
     
-      <table className="table table-bordered">
+      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
         <thead>
-          <tr>
+          <tr class="table-dark">
             <th>Id</th>
             <th>First name</th>
             <th>Last name</th>
@@ -49,12 +54,12 @@ function GetUser() {
         <tbody>
           {data.map(item => (
             <tr key={item.id}>
-              <td>{item.id}</td>
-              <td>{item.fname}</td>
-              <td>{item.lname}</td>
-              <td>{item.email}</td>
-              <td>
-                <Link to={`/edit/${item.id}`}>
+              <td class="table-secondary">{item.id}</td>
+              <td class="table-primary">{item.fname}</td>
+              <td class="table-danger">{item.lname}</td>
+              <td class="table-info">{item.email}</td>
+              <td class="table-light">
+                <Link to={`/aarteedit/${item.id}`}>
                   <button
                     type="button"
                     id="edit"
@@ -65,7 +70,7 @@ function GetUser() {
                   </button>
                 </Link>
                 <span> </span>
-                <Link to={`/delete/${item.id}`}>
+                <Link to={`/aartedelete/${item.id}`}>
                   <button type="button" id="del" className="btn btn-info add-new">
                     Delete
                   </button>
@@ -76,10 +81,16 @@ function GetUser() {
         </tbody>
         
       </table>
-      <Link to="/add"> <button type="button" className="btn btn-info add-new">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+        <Link to="/aarteadd"> <button class="btn btn-dark me-md-2" type="button">
+          <FaPlus />  <i className="fa fa-plus"></i> Add New
+        </button></Link>
+      </div>
+      {/* <Link to="/aarteadd"> <button type="button" className="btn btn-info add-new">
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New
-                                    </button></Link> 
+                                    </button></Link>  */}
     </div>
+    </main>
   );
 }
 

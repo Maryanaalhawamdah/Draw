@@ -41,7 +41,7 @@ function GetUser() {
 </div>
     <div id="mainUdiv">
     
-      <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
+      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
         <thead>
         <tr class="table-dark">
             <th>Id</th>
@@ -76,7 +76,7 @@ function GetUser() {
                   </button>
                 </Link>
                 <span> </span>
-                <Link to={`/delete/${item.id}`}>
+                <Link to={`/adudelate/${item.id}`}>
                   <button type="button" id="del" className="btn btn-info add-new">
                     Delete
                   </button>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+
 function Add() {
     const navigate = useNavigate();
 
@@ -11,10 +12,11 @@ function Add() {
         image: '',
         description: '',
         price: '',
-        categorie: ''
+        categories: ''
     };
 
     const [formData, setFormData] = useState(initialFormState);
+    const [error, setError] = useState('');
 
     const handleInputChange = (e) => {
         const { name, value, files } = e.target;
@@ -32,7 +34,7 @@ function Add() {
         }
     };
 
-    const submitData = (e) => {
+    const submitData = async (e) => {
         e.preventDefault();
         const url = 'http://localhost/DRAW/connection/products/add.php';
 
@@ -42,54 +44,65 @@ function Add() {
             data.append(key, formData[key]);
         }
 
-        axios.post(url, data)
-            .then(response => {
-                console.log("Response from PHP:", response.data);
-                navigate('/products');
-                setFormData(initialFormState); // Clear the form
-            })
-            .catch(error => {
-                console.error("Error:", error);
-            });
-    }
+        try {
+            const response = await axios.post(url, data);
+            console.log("Response from PHP:", response.data);
+            navigate('/apget');
+            setFormData(initialFormState); // Clear the form
+        } catch (error) {
+            console.error("Error:", error);
+        
+            if (error.response) {
+                // The request was made and the server responded with a status code
+                // that falls out of the range of 2xx
+                setError(`Server Error: ${error.response.status}`);
+            } else if (error.request) {
+                // The request was made but no response was received
+                setError("No response received from the server");
+            } else {
+                // Something happened in setting up the request that triggered an Error
+                setError("An error occurred while submitting the form.");
+            }
+        }
+        
 
     return (
         <main className='main-container'>
-      
-        <div className='sidebar'>
-      <Sidebar />
-    </div>
-        <div id="editPmaindiv">
-            <form id="form" onSubmit={submitData}>
-                <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
-                    <thead>
-                        <tr class="table-dark">
-                            <th>Name</th>
-                            <th>Price</th>
-                            <th>Details</th>
-                            <th>Image</th>
-                            <th>Categorie</th>
-                            <th>Action</th>
-                        </tr>
-                    </thead>
-
-                    <tbody>
-                        <tr>
-                            <td class="table-secondary"><input type="text" required name="name" value={formData.name} onChange={handleInputChange} /></td>
-                            <td class="table-danger"><input type="text" required name="price" value={formData.price} onChange={handleInputChange} /></td>
-                            <td class="table-success"><input type="text" required name="details" value={formData.details} onChange={handleInputChange} /></td>
-                            <td class="table-info"><input type="file" required name="photo" onChange={handleInputChange} /></td>
-                            <td class="table-primary"><input type="text" required name="categorie" value={formData.categorie} onChange={handleInputChange} /></td>
-                            <td class="table-light">
-                                <button type="submit" className="btn btn-info add-new">Add</button>
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </form>
-        </div>
+            <div className='sidebar'>
+                <Sidebar />
+            </div>
+            <div id="editPmaindiv">
+                <form id="form" onSubmit={submitData}>
+                    <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+                        <thead>
+                            <tr className="table-dark">
+                                <th>Name</th>
+                                <th>Image</th>
+                                <th>Description</th>
+                                <th>Price</th>                                
+                                <th>Categorie</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td className="table-secondary"><input type="text" required name="name" value={formData.name} onChange={handleInputChange} /></td>
+                                <td className="table-info"><input type="file" required name="image" onChange={handleInputChange} /></td>
+                                <td className="table-success"><input type="text" required name="description" value={formData.description} onChange={handleInputChange} /></td>
+                                <td className="table-danger"><input type="number" required name="price" value={formData.price} onChange={handleInputChange} /></td>
+                                <td className="table-primary"><input type="text" required name="categories" value={formData.categories} onChange={handleInputChange} /></td>
+                                <td className="table-light">
+                                    <button type="submit" className="btn btn-info add-new">Add</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    {error && <div className="alert alert-danger">{error}</div>}
+                </form>
+            </div>
         </main>
     );
+}
 }
 
 export default Add;

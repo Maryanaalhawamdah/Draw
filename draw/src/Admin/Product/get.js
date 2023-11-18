@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import {  Link } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
-
+import Header from "../adminHome/header";
 
 
 function GetProduct() {
@@ -39,14 +39,15 @@ function GetProduct() {
 
   
   return (
-    <main className='main-container'>
-      
+    
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>
     <div id="mainPdiv">
       
-      <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
+      <table className="table table-bordered" style={{width:'70%',marginLeft:'20px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
@@ -68,7 +69,7 @@ function GetProduct() {
               <td class="table-primary">{item.price}</td>
               
               <td class="table-light">
-                <Link to={`/edit/product/${item.id}`}>
+                <Link to={`/apedit/${item.id}`}>
                   <button
                     type="button"
                     id="edit"
@@ -79,7 +80,7 @@ function GetProduct() {
                   </button>
                 </Link>
                 <span> </span>
-                <Link to={`/delete/product/${item.id}`}>
+                <Link to={`/apdelete/${item.id}`}>
                   <button type="button" id="del" className="btn btn-info add-new">
                     Delete
                   </button>
@@ -92,11 +93,12 @@ function GetProduct() {
         </tbody>
         
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/addProdcut"> <button class="btn btn-dark me-md-2" type="button">
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <Link to="/aadd"> <button class="btn btn-dark me-mx-2 " type="button">
           <FaPlus />  <i className="fa fa-plus"></i> Add New
         </button></Link>
       </div>
+       
       {/* <Link to="/addProdcut"> <button type="button" className="btn btn-info add-new">
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New
                                     </button></Link>  */}

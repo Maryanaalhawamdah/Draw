@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import { FaPlus } from "react-icons/fa";
 // import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 
 
@@ -35,7 +35,7 @@ function Add() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/categories');
+                navigate('/acategory');
 
 
                 console.log(inputs)
@@ -49,9 +49,14 @@ function Add() {
     }
     
     return (
+        <main className='main-container'>
+      
+        <div className='sidebar'>
+      <Sidebar />
+    </div>
         <div id="ediCtmaindiv">
         <form id="form" onSubmit={submitData}>
-            <table className="table table-bordered">
+            <table className="table table-bordered" >
                 <thead>
                     <tr class="table-dark">
                        
@@ -76,6 +81,7 @@ function Add() {
             </table>
         </form>
     </div>
+    </main>
     );
 }
 

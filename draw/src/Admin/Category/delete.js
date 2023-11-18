@@ -14,7 +14,7 @@ function Delete() {
                 console.log("User deleted:", response.data);
 
 
-                navigate('/categories');
+                navigate('/acategory');
             })
             .catch(error => {
                 console.error("Error:", error);

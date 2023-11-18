@@ -9,7 +9,7 @@ import
  from 'recharts';
  import React, { useState, useEffect } from "react";
 import axios from 'axios';
-
+import Header from '../header';
 import 'bootstrap/dist/css/bootstrap.css';
 
 
@@ -143,8 +143,9 @@ console.log(`Number of IDs in data: ${idOrderUsers}`);
 // ===========  Get Orders end ======================= // 
 
   return (
-    <main className='main-container'>
-      
+
+    <main className='main-container-fixed'>
+      <Header/>
       <div className='sidebar'>
     <Sidebar />
   </div>

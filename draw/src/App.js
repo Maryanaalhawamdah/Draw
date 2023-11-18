@@ -14,6 +14,7 @@ import SpecialCase from "./components/SpecialCase/SpecialCase";
 import About from "./pages/About/About";
 import SignIn from "./pages/Account/SignIn";
 import SignUp from "./pages/Account/SignUp";
+import Userprofile from "./components/profile/UserProfile"
 import Cart from "./pages/Cart/Cart";
 import Contact from "./pages/Contact/Contact";
 import Home from "./pages/Home/Home";
@@ -28,10 +29,26 @@ import Paints from "./pages/Paints/paints";
 import AHome from './Admin/adminHome/ahome/Home';
 import AProducts from "./Admin/Product/get";
 import APedit from "./Admin/Product/edit";
+import APadd from "./Admin/Product/add";
 import APdelete from "./Admin/Product/delete";
 import AUser from "./Admin/Users/get";
 import ADuser from "./Admin/Users/add";
 import ADuedit from "./Admin/Users/edit";
+import ADudelete from "./Admin/Users/delete";
+import AAdmin from "./Admin/admin/get";
+import AAadd from "./Admin/admin/add";
+import AAedit from "./Admin/admin/edit";
+import AAdelete from "./Admin/admin/delete";
+import ACategory from "./Admin/Category/get";
+import ACadd from "./Admin/Category/add";
+import ACedit from "./Admin/Category/edit";
+// import ACdelete from "./Admin/Category/delete";
+import AOrder from "./Admin/Orders/get";
+import AArtist from "./Admin/artists/get";
+import AArtadd from "./Admin/artists/add";
+import AArtedit from "./Admin/artists/edit";
+import AArtdel from "./Admin/artists/delete";
+
  const Layout = () => {
   return (
     <div>
@@ -66,15 +83,32 @@ const router = createBrowserRouter(
       </Route>
       <Route path="/signup" element={<SignUp />}></Route>
       <Route path="/signin" element={<SignIn />}></Route>
+      <Route path="/userprofile" element={<Userprofile />}></Route>
       <Route path="/ahome" element={<AHome/>}>  </Route>
       <Route path="/apget" element={<AProducts/>}>  </Route>
+      <Route path="/aadd" element={<APadd/>}>  </Route>
       <Route path="/apedit" element={<APedit/>}>  </Route>
       <Route path="/apdelete" element={<APdelete/>}>  </Route>
       <Route path="/auget" element={<AUser/>}>  </Route>
       <Route path="/aduser" element={<ADuser/>}>  </Route>
       <Route path="/aduedit" element={<ADuedit/>}>  </Route>
-      
+      <Route path="/adudelate" element={<ADudelete/>}>  </Route>
+      <Route path="/aadmin" element={<AAdmin/>}></Route>
+      <Route path="/aaadd" element={<AAadd/>}></Route>
+      <Route path="/aaedit" element={<AAedit/>}></Route>
+      <Route path="/aadelete" element={<AAdelete/>}></Route>
+      <Route path="/acategory" element={<ACategory/>}></Route>
+      <Route path="/acatadd" element={<ACadd/>}></Route>
+      <Route path="/acatedit" element={<ACedit/>}></Route>
+      {/* <Route path="/acatdel" element={<ACdelete/>}></Route> */}
+      <Route path="/aorder" element={<AOrder/>}></Route>
+      <Route path="/aartist" element={<AArtist/>}></Route>
+      <Route path="/aarteadd" element={<AArtadd/>}></Route>
+      <Route path="/aarteedit" element={<AArtedit/>}></Route>
+      <Route path="/aartedelete" element={<AArtdel/>}></Route>
+      <Route path="/specialcase" element={<SpecialCase/>}> </Route>
     </Route>,
+    
    
   )
 );

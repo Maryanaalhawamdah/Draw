@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 
 
@@ -37,9 +37,14 @@ function GetOrders() {
 
   
   return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
     <div id="mainOdiv">
       
-      <table className="table table-bordered">
+      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
@@ -72,6 +77,7 @@ function GetOrders() {
         
       </table>
     </div>
+    </main>
   );
 }
 

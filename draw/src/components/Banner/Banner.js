@@ -104,17 +104,17 @@ const Banner = () => {
       <Slider {...settings} >
         <Link to="/offer">
           <div>
-            <Image imgSrc={bannerImgOne} style={{hight:"100px"}}/>
+            <Image imgSrc={bannerImgOne} style={{hight:"90px"}}/>
           </div>
         </Link>
         <Link to="/offer">
           <div>
-            <Image imgSrc={bannerImgTwo} style={{hight:"100px"}}/>
+            <Image imgSrc={bannerImgTwo} style={{hight:"90px"}}/>
           </div>
         </Link>
         <Link to="/offer">
           <div>
-            <Image imgSrc={bannerImgThree} style={{hight:"100px"}} />
+            <Image imgSrc={bannerImgThree} style={{hight:"90px"}} />
           </div>
         </Link>
       </Slider>

@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import {  Link } from 'react-router-dom';
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 function GetAdmins() {
   const [data, setData] = useState([]);
@@ -35,10 +36,15 @@ function GetAdmins() {
 
 
   return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
 
     <div id="maindiv">
 
-      <table className="table table-bordered">
+      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
@@ -89,6 +95,7 @@ function GetAdmins() {
       </div>
 
     </div>
+    </main>
   );
 }
 

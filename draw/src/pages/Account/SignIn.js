@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { BsCheckCircleFill } from "react-icons/bs";
 import { Link } from "react-router-dom";
 import { logoLight } from "../../assets/images";
-
+import axios from "axios";
 const SignIn = () => {
   // ============= Initial State Start here =============
   const [email, setEmail] = useState("");
@@ -24,25 +24,36 @@ const SignIn = () => {
     setErrPassword("");
   };
   // ============= Event Handler End here ===============
-  const handleSignUp = (e) => {
+  const handleSignIn = (e) => {
     e.preventDefault();
 
     if (!email) {
-      setErrEmail("Enter your email");
+        setErrEmail("Enter your email");
     }
 
     if (!password) {
-      setErrPassword("Create a password");
+        setErrPassword("Enter your password");
     }
-    // ============== Getting the value ==============
+
     if (email && password) {
-      setSuccessMsg(
-        `Hello dear, Thank you for your attempt. We are processing to validate your access. Till then stay connected and additional assistance will be sent to you by your mail at ${email}`
-      );
-      setEmail("");
-      setPassword("");
+        // Make an API request to your PHP script
+        axios.post("http://localhost/DRAW/connection/users/login.php", { email, password }, {withCredentials: true} )
+           .then((response) => {
+                if (response.data.success) {
+                    setSuccessMsg(response.data.message);
+                    setEmail("");
+                    setPassword("");
+                } else {
+                    // Handle authentication failure
+                    console.error("Authentication failed:", response.data.message);
+                }
+            })
+            .catch((error) => {
+                // Handle error
+                console.error("API request error:", error);
+            });
     }
-  };
+};
   return (
     <div className="w-full h-screen flex items-center justify-center">
       <div className="w-1/2 hidden lgl:inline-flex h-full text-white">
@@ -134,7 +145,7 @@ const SignIn = () => {
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-3xl mdl:text-4xl mb-4">
                 Sign in
               </h1>
-              <div className="flex flex-col gap-3">
+              <div className="flex flex-col gap-3" style={{color:'black'}}>
                 {/* Email */}
                 <div className="flex flex-col gap-.5">
                   <p className="font-titleFont text-base font-semibold text-gray-600">
@@ -145,7 +156,7 @@ const SignIn = () => {
                     value={email}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
-                    placeholder="john@workemail.com"
+                    placeholder="maryana@mar.com"
                   />
                   {errEmail && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -176,7 +187,7 @@ const SignIn = () => {
                 </div>
 
                 <button
-                  onClick={handleSignUp}
+                  onClick={handleSignIn}
                   className="bg-primeColor hover:bg-black text-gray-200 hover:text-white cursor-pointer w-full text-base font-medium h-10 rounded-md  duration-300"
                 >
                   Sign In

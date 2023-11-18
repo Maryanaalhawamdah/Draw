@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import { FaPlus } from "react-icons/fa";
 // import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 function Edit() {
 
@@ -58,9 +58,14 @@ function Edit() {
    
    // ...
 return (
+    <main className='main-container'>
+      
+    <div className='sidebar'>
+  <Sidebar />
+</div>
     <div id="editUmaindiv">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered">
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
                 <thead>
                     <tr>
                         <th>Id</th>
@@ -76,11 +81,11 @@ return (
                 
                     
                     <tr>
-                        <td><input type="text" value={data.id} name="id" onChange={changed} /></td>
-                        <td><input type="text" required placeholder={data.fname} name="fname" onChange={changed} /></td>
-                        <td><input type="text" required placeholder={data.lname} name="lname" onChange={changed} /></td>
-                        <td><input type="text" required placeholder={data.email} name="email" onChange={changed} /></td>
-                        <td>
+                        <td class="table-primary"><input type="text" value={data.id} name="id" onChange={changed} /></td>
+                        <td class="table-info"><input type="text" required placeholder={data.fname} name="fname" onChange={changed} /></td>
+                        <td class="table-light"><input type="text" required placeholder={data.lname} name="lname" onChange={changed} /></td>
+                        <td class="table-success"><input type="text" required placeholder={data.email} name="email" onChange={changed} /></td>
+                        <td class="table-light">
                             <button type="submit" className="btn btn-info add-new">Save</button>
                         </td>
                     </tr>
@@ -89,6 +94,7 @@ return (
             </table>
         </form>
     </div>
+    </main>
 );
 // ...
 

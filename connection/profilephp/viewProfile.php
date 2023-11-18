@@ -6,40 +6,30 @@ header('Content-type: application/json');
 
 require("../conn.php");
 
-if ($_SERVER['REQUEST_METHOD'] === 'GET') {
-    $id = $_GET['id'];
+// Check if "id" is set in the request
+if (isset($_REQUEST['id'])) {
+    $id = $_REQUEST['id'];
 
-    // Use a prepared statement to prevent SQL injection
-    $stmt = $pdo->prepare("SELECT * FROM Users WHERE `UserId` = ?");
-    $stmt->execute([$id]);
+    try {
+        // Use a prepared statement to prevent SQL injection
+        $stmt = $pdo->prepare("SELECT * FROM Users WHERE `UserId` = :id");
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        $stmt->execute();
 
-    $user = array();
+        $user = array();
 
-    // Fetch the data from the prepared statement
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $user[] = $row;
+        // Fetch the data from the prepared statement
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+            $user[] = $row;
+        }
+
+        echo json_encode($user);
+    } catch (PDOException $e) {
+        // Handle database errors
+        echo json_encode(['error' => 'Database error: ' . $e->getMessage()]);
     }
-
-    echo json_encode($user);
-} elseif ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Handle POST request
-    $data = json_decode(file_get_contents("php://input"));
-    $id = $data->id;
-
-    // Use a prepared statement to prevent SQL injection
-    $stmt = $pdo->prepare("SELECT * FROM Users WHERE `UserId` = ?");
-    $stmt->execute([$id]);
-
-    $user = array();
-
-    // Fetch the data from the prepared statement
-    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-        $user[] = $row;
-    }
-
-    echo json_encode($user);
 } else {
-    echo json_encode(['error' => 'Invalid request method']);
+    echo json_encode(['error' => 'Missing "id" parameter']);
 }
 
 // Close the database connection

@@ -461,7 +461,7 @@ body {
   }
   
   .sidebar {
-    width: 250px;
+    width: 10%;
     position: fixed; /* Set the sidebar to a fixed position */
     top: 0; /* Adjust the top position as needed */
     left: 0; /* Set the sidebar on the left side of the screen */
@@ -481,4 +481,20 @@ body {
   
   /* Add your styling for main-title, main-cards, and other elements as needed */
   
-  
+.table{ width:70%;margin-Left:100px}  
+.main-container-fixed {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Style for the fixed header */
+.main-container-fixed Header {
+  position: fixed;
+  width: 100%;
+  z-index: 1000; /* Adjust the z-index as needed to ensure it's above other elements */
+}
+
+/* Give some padding to the content to avoid being hidden behind the fixed header */
+.main-container-fixed #mainPdiv {
+  padding-top: 70px; /* Adjust the padding value based on your header's height */
+}

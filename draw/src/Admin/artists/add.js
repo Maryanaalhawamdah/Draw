@@ -4,7 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import { FaPlus } from "react-icons/fa";
 // import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import {  useNavigate } from 'react-router-dom';
-
+import Sidebar from "../adminHome/ahome/Sidebar";
 
 
 
@@ -47,9 +47,14 @@ function Add() {
     }
     
     return (
+        <main className='main-container'>
+      
+        <div className='sidebar'>
+      <Sidebar />
+    </div>
         <div id="editUmaindiv">
         <form id="form" onSubmit={submitData}>
-            <table className="table table-bordered">
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
                 <thead>
                     <tr class="table-dark">
                        
@@ -80,6 +85,7 @@ function Add() {
             </table>
         </form>
     </div>
+    </main>
     );
 }
 

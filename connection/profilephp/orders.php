@@ -8,8 +8,7 @@ require("../conn.php"); // Include your database connection here
 
 if ($_SERVER['REQUEST_METHOD'] === 'GET') {
     // Handle GET request
-    $data = json_decode(file_get_contents("php://input"));
-    $id = $data->id; // Assuming you are passing the user ID from React
+    $id = $_GET['id']; // Assuming you are passing the user ID from React
 
     try {
         // Use a prepared statement to prevent SQL injection
@@ -41,22 +40,15 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
         foreach ($orders as $order) {
             $orderId = $order['BillID'];
-            $stmt = $pdo->prepare("SELECT p.ProductName , p.Image FROM bill AS b join bill_products bp on bp.bill_id = b.BillID JOIN products AS p ON bp.product_id = p.ProductID WHERE b.BillID = ?");
-            $stmt->execute([$orderId]);
-            $products = $stmt->fetchAll(PDO::FETCH_ASSOC);
+            $stmtProduct = $pdo->prepare("SELECT p.ProductName , p.Image FROM bill AS b join bill_products bp on bp.bill_id = b.BillID JOIN products AS p ON bp.product_id = p.ProductID WHERE b.BillID = ?");
+            $stmtProduct->execute([$orderId]);
+            $products = $stmtProduct->fetchAll(PDO::FETCH_ASSOC);
 
             // Add the products to the order
             $order['Products'] = $products;
 
             // Add the modified order to the result array
             $ordersWithProducts[] = $order;
-        }
-        // var_dump($ordersWithProducts);
-
-
-        // Fetch the data from the prepared statement
-        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-            $orders[] = $row;
         }
 
         echo json_encode($ordersWithProducts);
@@ -69,3 +61,4 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
 // Close the database connection
 $pdo = null;
+?>

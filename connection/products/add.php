@@ -2,37 +2,43 @@
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
-header("Content-type: application/json");
+header("Content-type: multipart/form-data"); // Corrected Content-type
 
 include_once("../conn.php");
 
 // Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get the JSON data from the request body
-    $data = file_get_contents("php://input");
-    $product = json_decode($data, true);
+    // Check if the required fields exist in the POST request
+    if (isset($_POST['name']) && isset($_FILES['image']) && isset($_POST['description']) && isset($_POST['price']) && isset($_POST['categories'])) {
+        $name = $_POST['name'];
+        $description = $_POST['description'];
+        $price = $_POST['price'];
+        $categories = $_POST['categories'];
 
-    // Check if required fields exist in the JSON data
-    if (isset($product['name']) && isset($product['image']) && isset($product['description']) && isset($product['price']) && isset($product['product-type'])) {
-        $name = $product['name'];
-        $image = $product['image'];
-        $description = $product['description'];
-        $price = $product['price'];
-        $producttype = $product['product-type'];
+        // File upload handling
+        $image = $_FILES['image']['name'];
+        $target_dir = "path/to/your/upload/directory/";
+        $target_file = $target_dir . basename($image);
 
-        // Perform the database insert
-        $sql = "INSERT INTO products (name, image, description, price, product_type)
-        VALUES ('$name', '$image', '$description', '$price', '$producttype')";
+        if (move_uploaded_file($_FILES['image']['tmp_name'], $target_file)) {
+            // Perform the database insert
+            $sql = "INSERT INTO products (name, image, description, price, categories)
+            VALUES (?, ?, ?, ?, ?)";
+    
+            // Prepare and execute the SQL statement
+            $stmt = $conn->prepare($sql);
+            $stmt->bind_param("sssss", $name, $image, $description, $price, $categories);
 
-        // Prepare and execute the SQL statement
-        $stmt = $conn->prepare($sql);
-        if ($stmt->execute()) {
-            echo json_encode(array("message" => "Product inserted successfully."));
+            if ($stmt->execute()) {
+                echo json_encode(array("message" => "Product inserted successfully."));
+            } else {
+                echo json_encode(array("message" => "Product insertion failed.", "error" => $stmt->error));
+            }
         } else {
-            echo json_encode(array("message" => "Product insertion failed."));
+            echo json_encode(array("message" => "File upload failed."));
         }
     } else {
-        echo json_encode(array("message" => "Missing required fields in the JSON data."));
+        echo json_encode(array("message" => "Missing required fields in the POST request."));
     }
 } else {
     echo json_encode(array("message" => "Invalid request method."));

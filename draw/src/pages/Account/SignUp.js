@@ -46,9 +46,11 @@ const SignUp = () => {
     setErrAddress("");
   };
   const handleImage = (e) => {
-    setImage(e.target.value);
+    const file = e.target.files[0];
+    setImage(file);
     setErrImage("");
   };
+  
   
   // ============= Event Handler End here ===============
   // ================= Email Validation start here =============
@@ -98,17 +100,17 @@ const SignUp = () => {
         password.length >= 6 &&
         phone &&
         address &&
-        image 
-      ) {
-        try {
-          const response = await axios.post("http://localhost/DRAW/connection/users/register.php", {
+        image
+    ) {
+      try {
+        const response = await axios.post("http://localhost/DRAW/connection/users/register.php", {
             clientName,
             email,
             password,
             phone,
             address,
             image,
-          });
+        });
           setSuccessMsg(response.data.message);
           setClientName("");
           setEmail("");
@@ -207,7 +209,7 @@ const SignUp = () => {
             </Link>
           </div>
         ) : (
-          <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center">
+          <form className="w-full lgl:w-[500px] h-screen flex items-center justify-center" style={{color:'black'}}>
             <div className="px-6 py-4 w-full h-[96%] flex flex-col justify-start overflow-y-scroll scrollbar-thin scrollbar-thumb-primeColor">
               <h1 className="font-titleFont underline underline-offset-4 decoration-[1px] font-semibold text-2xl mdl:text-3xl mb-4">
                 Create your account
@@ -223,7 +225,7 @@ const SignUp = () => {
                     value={clientName}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="text"
-                    placeholder="eg. John Doe"
+                    placeholder="eg. Maryana mohammad"
                   />
                   {errClientName && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -242,7 +244,7 @@ const SignUp = () => {
                     value={email}
                     className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
                     type="email"
-                    placeholder="john@workemail.com"
+                    placeholder="maryana@mar.com"
                   />
                   {errEmail && (
                     <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
@@ -310,23 +312,21 @@ const SignUp = () => {
                 </div>
                 {/* Image */}
                 <div className="flex flex-col gap-.5">
-                  <p className="font-titleFont text-base font-semibold text-gray-600">
-                    Image
-                  </p>
-                  <input
-                    onChange={handleImage}
-                    value={image}
-                    className="w-full h-8 placeholder:text-sm placeholder:tracking-wide px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
-                    type="text"
-                    placeholder="Your Image"
-                  />
-                  {errImage && (
-                    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
-                      <span className="font-bold italic mr-1">!</span>
-                      {errImage}
-                    </p>
-                  )}
-                </div>
+  <p className="font-titleFont text-base font-semibold text-gray-600">
+    Image
+  </p>
+  <input
+    onChange={handleImage}
+    className="w-full h-8 px-4 text-base font-medium placeholder:font-normal rounded-md border-[1px] border-gray-400 outline-none"
+    type="file"
+  />
+  {errImage && (
+    <p className="text-sm text-red-500 font-titleFont font-semibold px-4">
+      <span className="font-bold italic mr-1">!</span>
+      {errImage}
+    </p>
+  )}
+</div>
                 
                 
                 {/* Checkbox */}

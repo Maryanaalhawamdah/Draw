@@ -49,21 +49,22 @@ function Add() {
     return (
         <main className='main-container'>
       
-        <div className='sidebar'>
+        <div className='sidebar'style={{width:'10%'}}>
       <Sidebar />
     </div>
         <div id="editUmaindiv">
             <form id="form" onSubmit={submitData}>
-                <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
+                <table className="3 table-bordered" style={{width:'70%',marginLeft:'100px'}}>
                     <thead>
                         <tr class="table-dark">
 
-                            <th>Fname</th>
-                            <th>Lname</th>
+                            <th>User Name</th>
+                            
                             <th>Email</th>
                             <th>Password</th>
-                            <th>Address</th>
                             <th>Phone</th>
+                            <th>Address</th>
+                            <th>Image</th>
                             <th >Action</th>
                         </tr>
                     </thead>
@@ -74,12 +75,12 @@ function Add() {
 
                         <tr>
 
-                            <td class="table-secondary"><input type="text" required name="fname" onChange={changed} /></td>
-                            <td class="table-danger"><input type="text" required name="lname" onChange={changed} /></td>
+                            <td class="table-secondary"><input type="text" required name="username" onChange={changed} /></td>
                             <td class="table-success"><input type="text" required name="email" onChange={changed} /></td>
                             <td class="table-danger"><input type="text" required name="password" onChange={changed} /></td>
                             <td class="table-info"><input type="text" required name="phone" onChange={changed} /></td>
                             <td class="table-primary"><input type="text" required name="address" onChange={changed} /></td>
+                            <td className="table-info"><input type="file" required name="image" onChange={changed} /></td>
                             <td class="table-light">
                                 <button type="submit" className="btn btn-info add-new">Add</button>
                             </td>

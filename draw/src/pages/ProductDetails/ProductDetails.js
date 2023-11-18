@@ -15,7 +15,7 @@ const ProductDetails = () => {
   }, [location, productInfo]);
 
   return (
-    <div className="w-full mx-auto border-b-[1px] border-b-gray-300">
+    <div className="w-full mx-auto border-b-[1px] border-b-gray-300" style={{color:"black"}}>
       <div className="max-w-container mx-auto px-4">
         <div className="xl:-mt-10 -mt-7">
           <Breadcrumbs title="" prevLocation={prevLocation} />

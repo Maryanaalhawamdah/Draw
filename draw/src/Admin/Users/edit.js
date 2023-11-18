@@ -66,7 +66,7 @@ return (
 </div>
     <div id="editUmaindiv">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered" style={{width:'90%',marginLeft:'150px'}}>
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
                 <thead>
                 <tr class="table-dark">
                 <th>Id</th>
