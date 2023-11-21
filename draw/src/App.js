@@ -42,7 +42,7 @@ import AAdelete from "./Admin/admin/delete";
 import ACategory from "./Admin/Category/get";
 import ACadd from "./Admin/Category/add";
 import ACedit from "./Admin/Category/edit";
-// import ACdelete from "./Admin/Category/delete";
+import ACdelete from "./Admin/Category/delete";
 import AOrder from "./Admin/Orders/get";
 import AArtist from "./Admin/artists/get";
 import AArtadd from "./Admin/artists/add";
@@ -100,7 +100,7 @@ const router = createBrowserRouter(
       <Route path="/acategory" element={<ACategory/>}></Route>
       <Route path="/acatadd" element={<ACadd/>}></Route>
       <Route path="/acatedit" element={<ACedit/>}></Route>
-      {/* <Route path="/acatdel" element={<ACdelete/>}></Route> */}
+       <Route path="/acatdel" element={<ACdelete/>}></Route>
       <Route path="/aorder" element={<AOrder/>}></Route>
       <Route path="/aartist" element={<AArtist/>}></Route>
       <Route path="/aarteadd" element={<AArtadd/>}></Route>

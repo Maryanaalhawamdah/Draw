@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Header from "../adminHome/header";
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
@@ -34,20 +35,19 @@ function GetUser() {
  
 
   return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>
     <div id="mainUdiv">
     
-      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+      <table className="table table-bordered" style={{width:'55%',marginLeft:'100px'}}>
         <thead>
         <tr class="table-dark">
             <th>Id</th>
-            <th>Username</th>            
+            <th>clientName</th>            
             <th>Email</th>
-            <th>Dob</th>            
             <th>Phone</th>
             <th>Address</th>
             <th>Image</th>
@@ -55,12 +55,11 @@ function GetUser() {
           </tr>
         </thead>
         <tbody>
-          {data.map(item => (
+          {Array.isArray(data) && data.map(item => (
             <tr key={item.id}>
               <td class="table-secondary">{item.id}</td>
-              <td class="table-danger">{item.username}</td>
+              <td class="table-danger">{item.clientName}</td>
               <td class="table-success">{item.email}</td>
-              <td class="table-danger">{item.dob}</td>
               <td class="table-info">{item.phone}</td>
               <td class="table-primary">{item.address}</td>
               <td class="table-success"><img src={`/assets/${item.image}`} alt={item.name} width={"70px"}/></td>
@@ -87,9 +86,9 @@ function GetUser() {
         </tbody>
         
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/aduser"> <button class="btn btn-dark me-md-2" type="button">
-          <FaPlus />  <i className="fa fa-plus"></i> Add New
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <Link to="/aduser"> <button class="btn btn-dark me-md-2" type="button" style={{ width: '200px' }}>
+          <FaPlus />  Add New 
         </button></Link>
       </div>
       {/* <Link to="/add"> <button type="button" className="btn btn-info add-new">

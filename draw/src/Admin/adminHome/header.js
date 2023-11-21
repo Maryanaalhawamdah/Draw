@@ -4,11 +4,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 const Header = () =>{
     return(
-        <div className="header">
+        <div className="header" style={{width:'100%'}}>
          
-<nav class="navbar navbar-dark bg-primary">
-  <div class="container-fluid">
-    <a class="navbar-brand" href="#"></a>
+<nav className="navbar navbar-dark bg-dark" style={{width:'100%',height:'50px'}}>
+  <div className="container-fluid">
+    <a className="navbar-brand" href="#" style={{marginLeft:'45%'}}>Admin Dashbord</a>
   </div>
 </nav>
             </div>

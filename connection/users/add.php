@@ -15,35 +15,35 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Check if the required fields are set in the JSON data
     if (
-        isset($user['username']) &&
+        isset($user['clientName']) &&
         isset($user['email']) &&
         isset($user['password']) &&
-        isset($user['dob']) &&
         isset($user['phone']) &&
         isset($user['address']) &&
         isset($user['image'])
     ) {
-        $username = $user['username'];
+        // Assign values to variables
+        $clientName = $user['clientName'];
         $email = $user['email'];
         $password = password_hash($user['password'], PASSWORD_BCRYPT);
-        $dob = $user['dob'];
         $phone = $user['phone'];
         $address = $user['address'];
         $image = $user['image'];
         $isAdmin = 0;
 
         // Prepare the SQL statement with placeholders
-        $sql = "INSERT INTO customer (username, email, password, dob, phone, address, image, isAdmin)
-        VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        $sql = "INSERT INTO users (clientName, email, password,  phone, address, image, isAdmin)
+        VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         // Prepare and execute the SQL statement with placeholders
         $stmt = $conn->prepare($sql);
-        $stmt->bind_param("sssssssi", $username, $email, $password, $dob, $phone, $address, $image, $isAdmin);
-
+        // Assuming 'dob' is a required column in your table; adjust the data types accordingly
+        $stmt->bind_param("sssssss", $clientName, $email, $password, $dob, $phone, $address, $image, $isAdmin);
+        
         if ($stmt->execute()) {
             echo json_encode(array("message" => "Data inserted successfully."));
         } else {
-            echo json_encode(array("message" => "Data insertion failed."));
+            echo json_encode(array("message" => "Data insertion failed.", "error" => $stmt->error));
         }
     } else {
         echo json_encode(array("message" => "Missing or invalid data in the request."));

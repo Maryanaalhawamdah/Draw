@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+import Header from "../adminHome/header";
 
 
 
@@ -35,7 +36,7 @@ function Add() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/users');
+                navigate('/auget');
                 console.log(inputs)
             })
             .catch(error => {
@@ -47,14 +48,14 @@ function Add() {
     }
 
     return (
-        <main className='main-container'>
-      
+        <main className='main-container-fixed'>
+      <Header/>
         <div className='sidebar'style={{width:'10%'}}>
       <Sidebar />
     </div>
         <div id="editUmaindiv">
             <form id="form" onSubmit={submitData}>
-                <table className="3 table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+                <table className="table table-bordered" style={{width:'60%',marginLeft:'130px'}}>
                     <thead>
                         <tr class="table-dark">
 
@@ -75,7 +76,7 @@ function Add() {
 
                         <tr>
 
-                            <td class="table-secondary"><input type="text" required name="username" onChange={changed} /></td>
+                            <td class="table-secondary"><input type="text" required name="clientName" onChange={changed} /></td>
                             <td class="table-success"><input type="text" required name="email" onChange={changed} /></td>
                             <td class="table-danger"><input type="text" required name="password" onChange={changed} /></td>
                             <td class="table-info"><input type="text" required name="phone" onChange={changed} /></td>

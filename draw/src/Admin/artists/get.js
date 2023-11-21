@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Header from "../adminHome/header";
+
 import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
@@ -34,8 +36,8 @@ function GetUser() {
  
 
   return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>

@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+import Header from "../adminHome/header";
 
 function Edit() {
 
@@ -58,8 +59,8 @@ function Edit() {
    
    // ...
 return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>

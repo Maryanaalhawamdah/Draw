@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import axios from 'axios';
 import { useParams, useNavigate } from 'react-router-dom';
+import Header from "../adminHome/header";
 
 function Delete() {
     const { id } = useParams();
@@ -11,7 +12,7 @@ function Delete() {
         axios.delete(url)
             .then(response => {
                 console.log("User deleted:", response.data);
-                navigate('/users');
+                navigate('/auget');
 
             })
             .catch(error => {
@@ -21,6 +22,7 @@ function Delete() {
 
     return (
         <div>
+            <Header/>
             Deleting User...
         </div>
     );

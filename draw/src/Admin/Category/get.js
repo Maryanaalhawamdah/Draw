@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from 'axios';
+import Header from "../adminHome/header";
+
 import { FaPlus } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
@@ -17,13 +19,13 @@ function GetCategories() {
   }, []);
 
   return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>
     <div id="maiCndiv">
-      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+      <table className="table table-bordered" style={{width:'30%',marginLeft:'80px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
@@ -38,13 +40,13 @@ function GetCategories() {
                 <td class="table-secondary">{item.id}</td>
                 <td class="table-danger">{item.name}</td>
                 <td class="table-light">
-                  <Link to={`/acatedit/${item.id}`}>
+                  <Link to="/acatedit">
                     <button type="button" id="edit" className="btn btn-info add-new"
                   >
                     <i className="fa fa-plus"></i> Edit
                   </button>
                   </Link>
-                  <Link to={`/acatdel/${item.id}`}>
+                  <Link to="/acatdel">
                   <button type="button" id="del" className="btn btn-info add-new">
                     Delete
                   </button>
@@ -59,9 +61,9 @@ function GetCategories() {
           )}
         </tbody>
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/acatadd"> <button class="btn btn-dark me-md-2" type="button">
-          <FaPlus />  <i className="fa fa-plus"></i> Add New
+      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        <Link to="/acatadd"> <button class="btn btn-dark me-md-2" type="button"  style={{ width: '200px' }}>
+          <FaPlus />   Add New
         </button></Link>
       </div>
       {/* <Link to="/add/category">

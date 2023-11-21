@@ -3,6 +3,7 @@ import axios from 'axios';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useNavigate } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+import Header from "../adminHome/header";
 
 function Add() {
     const navigate = useNavigate();
@@ -51,35 +52,32 @@ function Add() {
             setFormData(initialFormState); // Clear the form
         } catch (error) {
             console.error("Error:", error);
-        
+
             if (error.response) {
-                // The request was made and the server responded with a status code
-                // that falls out of the range of 2xx
                 setError(`Server Error: ${error.response.status}`);
             } else if (error.request) {
-                // The request was made but no response was received
                 setError("No response received from the server");
             } else {
-                // Something happened in setting up the request that triggered an Error
                 setError("An error occurred while submitting the form.");
             }
         }
-        
+    };
 
     return (
-        <main className='main-container'>
+        <main className='main-container-fixed'>
+            <Header/>
             <div className='sidebar'>
                 <Sidebar />
             </div>
             <div id="editPmaindiv">
                 <form id="form" onSubmit={submitData}>
-                    <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+                    <table className="table table-bordered" style={{ width: '70%', marginLeft: '170px' }}>
                         <thead>
                             <tr className="table-dark">
                                 <th>Name</th>
                                 <th>Image</th>
                                 <th>Description</th>
-                                <th>Price</th>                                
+                                <th>Price</th>
                                 <th>Categorie</th>
                                 <th>Action</th>
                             </tr>
@@ -102,7 +100,6 @@ function Add() {
             </div>
         </main>
     );
-}
 }
 
 export default Add;

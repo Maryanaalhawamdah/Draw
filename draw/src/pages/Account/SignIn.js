@@ -38,20 +38,17 @@ const SignIn = () => {
     if (email && password) {
         // Make an API request to your PHP script
         axios.post("http://localhost/DRAW/connection/users/login.php", { email, password }, {withCredentials: true} )
-           .then((response) => {
-                if (response.data.success) {
-                    setSuccessMsg(response.data.message);
-                    setEmail("");
-                    setPassword("");
-                } else {
-                    // Handle authentication failure
-                    console.error("Authentication failed:", response.data.message);
-                }
-            })
-            .catch((error) => {
-                // Handle error
-                console.error("API request error:", error);
-            });
+        .then((response) => {
+          if (response.data.success) {
+              setSuccessMsg(response.data.message);
+              setEmail("");
+              setPassword("");
+          } else {
+              setErrEmail("Authentication failed");
+              setErrPassword("Authentication failed");
+              // console.error("Authentication failed:", response.data.message);
+          }
+       })
     }
 };
   return (

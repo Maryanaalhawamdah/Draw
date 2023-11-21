@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 import { FaPlus } from "react-icons/fa";
 import {  Link } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+import Header from "../adminHome/header";
 
 function GetAdmins() {
   const [data, setData] = useState([]);
@@ -36,8 +37,8 @@ function GetAdmins() {
 
 
   return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>

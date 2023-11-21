@@ -5,6 +5,7 @@ import 'bootstrap/dist/css/bootstrap.css';
 // import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+import Header from "../adminHome/header";
 
 function Edit() {
 
@@ -57,14 +58,14 @@ function Edit() {
    
   
 return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>
     <div id="editmaindiv">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+            <table className="table table-bordered" style={{width:'60%',marginLeft:'150px'}}>
                 <thead>
                     <tr  class="table-dark">
                         <th>Id</th>
@@ -78,7 +79,7 @@ return (
                 
                     
                     <tr>
-                        <td class="table-secondary"><input type="text" value="" name="id" onChange={changed} /></td>
+                        <td class="table-secondary"><input type="text" value={data.id} name="id" onChange={changed} /></td>
                         <td class="table-danger"><input type="text" required placeholder={data.name} name="name" onChange={changed} /></td>
                         <td class="table-light">
                             <button type="submit" className="btn btn-info add-new">Save</button>

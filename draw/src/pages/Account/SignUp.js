@@ -47,8 +47,16 @@ const SignUp = () => {
   };
   const handleImage = (e) => {
     const file = e.target.files[0];
-    setImage(file);
-    setErrImage("");
+    const reader = new FileReader();
+  
+    reader.onloadend = () => {
+      setImage(reader.result); // Store the base64-encoded content in state
+      setErrImage("");
+    };
+  
+    if (file) {
+      reader.readAsDataURL(file);
+    }
   };
   
   
@@ -110,7 +118,7 @@ const SignUp = () => {
             phone,
             address,
             image,
-        });
+        }, { timeout: 5000 });
           setSuccessMsg(response.data.message);
           setClientName("");
           setEmail("");

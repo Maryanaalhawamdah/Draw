@@ -93,11 +93,18 @@ function GetProduct() {
         </tbody>
         
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <Link to="/aadd"> <button class="btn btn-dark me-mx-2 " type="button">
-          <FaPlus />  <i className="fa fa-plus"></i> Add New
-        </button></Link>
-      </div>
+      <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+  <Link to="/aadd">
+    <button
+      className="btn btn-dark me-md-2"
+      type="button"
+      style={{ width: '200px' }} // Adjust the width as needed
+    >
+      <FaPlus /> <i className="fa fa-plus"></i> Add New
+    </button>
+  </Link>
+</div>
+
        
       {/* <Link to="/addProdcut"> <button type="button" className="btn btn-info add-new">
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New

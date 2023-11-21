@@ -9,7 +9,7 @@ include_once("../conn.php");
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
 } else {
-    echo 'Invalid request: Missing customer ID.';
+    echo 'Invalid request: Missing users ID.';
     return;
 }
 
@@ -18,19 +18,20 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customer = json_decode($data, true);
 
     if (
-        isset($customer['fname']) &&
-        isset($customer['lname']) &&
+        isset($customer['clientName']) &&
         isset($customer['email']) &&
+        isset($customer['phone'])&&
         isset($customer['address']) &&
-        isset($customer['phone'])
+        isset($customer['image'])
+        
     ) {
-        $fname = $customer['fname'];
-        $lname = $customer['lname'];
+        $clientName = $customer['clientName'];       
         $email = $customer['email'];
-        $address = $customer['address'];
         $phone = $customer['phone'];
+        $address = $customer['address'];
+        $image = $customer['image'];
 
-        $sql = "UPDATE customer SET fname = '$fname', lname = '$lname', email = '$email', address = '$address', phone = '$phone' WHERE id = $id";
+        $sql = "UPDATE users SET clientName = '$clientName',  email = '$email',phone = '$phone', address = '$address',image='$image'  WHERE id = $id";
 
         try {
             $conn->exec($sql);

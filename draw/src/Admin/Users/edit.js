@@ -5,6 +5,7 @@ import { FaPlus } from "react-icons/fa";
 import { BrowserRouter, Link, Routes, Route } from 'react-router-dom';
 import { useParams, useNavigate } from 'react-router-dom';
 import Sidebar from "../adminHome/ahome/Sidebar";
+import Header from "../adminHome/header";
 
 function Edit() {
 
@@ -44,7 +45,7 @@ function Edit() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/aduedit');
+                navigate('/auget');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -57,10 +58,10 @@ function Edit() {
 
    
    
-   // ...
+   
 return (
-    <main className='main-container'>
-      
+    <main className='main-container-fixed'>
+      <Header/>
     <div className='sidebar'>
   <Sidebar />
 </div>
@@ -70,9 +71,8 @@ return (
                 <thead>
                 <tr class="table-dark">
                 <th>Id</th>
-            <th>Username</th>            
-            <th>Email</th>
-            <th>Dob</th>            
+            <th>clientName</th>            
+            <th>Email</th>                      
             <th>Phone</th>
             <th>Address</th>
             <th>Image</th>
@@ -86,9 +86,8 @@ return (
                     
                     <tr>
                     <td class="table-secondary"><input type="text" value={data.id} name="id" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required value={data.name || ''} name="username" onChange={changed} /></td>
+                        <td class="table-danger"><input type="text" required value={data.clientName || ''} name="username" onChange={changed} /></td>
                         <td class="table-success"><input type="text" required value={data.email || ''} name="email" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required value={data.dob || ''} name="dob" onChange={changed} /></td>
                         <td class="table-info"><input type="text" required value={data.phone || ''} name="phone" onChange={changed} /></td>
                         <td class="table-primary"><input type="text" required value={data.address || ''} name="address" onChange={changed} /></td>
                         <td class="table-primary"><input type="text" required value={data.image || ''} name="image" onChange={changed} /></td>
@@ -104,7 +103,7 @@ return (
     </div>
     </main>
 );
-// ...
+
 
 }
 
