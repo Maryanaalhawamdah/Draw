@@ -87,25 +87,25 @@ const router = createBrowserRouter(
       <Route path="/ahome" element={<AHome/>}>  </Route>
       <Route path="/apget" element={<AProducts/>}>  </Route>
       <Route path="/aadd" element={<APadd/>}>  </Route>
-      <Route path="/apedit" element={<APedit/>}>  </Route>
-      <Route path="/apdelete" element={<APdelete/>}>  </Route>
+      <Route path="/apedit/:id" element={<APedit/>}>  </Route>
+      <Route path="/apdelete/:id" element={<APdelete/>}>  </Route>
       <Route path="/auget" element={<AUser/>}>  </Route>
       <Route path="/aduser" element={<ADuser/>}>  </Route>
-      <Route path="/aduedit" element={<ADuedit/>}>  </Route>
-      <Route path="/adudelate" element={<ADudelete/>}>  </Route>
+      <Route path="/aduedit/:id" element={<ADuedit/>}>  </Route>
+      <Route path="/adudelate/:id" element={<ADudelete/>}>  </Route>
       <Route path="/aadmin" element={<AAdmin/>}></Route>
       <Route path="/aaadd" element={<AAadd/>}></Route>
-      <Route path="/aaedit" element={<AAedit/>}></Route>
-      <Route path="/aadelete" element={<AAdelete/>}></Route>
+      <Route path="/aaedit/:id" element={<AAedit/>}></Route>
+      <Route path="/aadelete/:id" element={<AAdelete/>}></Route>
       <Route path="/acategory" element={<ACategory/>}></Route>
       <Route path="/acatadd" element={<ACadd/>}></Route>
-      <Route path="/acatedit" element={<ACedit/>}></Route>
-       <Route path="/acatdel" element={<ACdelete/>}></Route>
+      <Route path="/acatedit/:id" element={<ACedit/>}></Route>
+       <Route path="/acatdel/:id" element={<ACdelete/>}></Route>
       <Route path="/aorder" element={<AOrder/>}></Route>
       <Route path="/aartist" element={<AArtist/>}></Route>
       <Route path="/aarteadd" element={<AArtadd/>}></Route>
-      <Route path="/aarteedit" element={<AArtedit/>}></Route>
-      <Route path="/aartedelete" element={<AArtdel/>}></Route>
+      <Route path="/aarteedit/:id" element={<AArtedit/>}></Route>
+      <Route path="/aartedelete/:id" element={<AArtdel/>}></Route>
       <Route path="/specialcase" element={<SpecialCase/>}> </Route>
     </Route>,
     

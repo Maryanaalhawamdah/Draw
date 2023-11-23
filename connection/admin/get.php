@@ -10,7 +10,7 @@ include_once("../conn.php");
 
 
     
-    $query = "SELECT * FROM customer WHERE isAdmin=1 ";
+    $query = "SELECT * FROM admin ";
     $ret = $conn->query($query);
     $data = $ret->fetchAll(PDO::FETCH_ASSOC);
     echo json_encode($data);

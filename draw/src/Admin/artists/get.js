@@ -43,13 +43,14 @@ function GetUser() {
 </div>
     <div id="mainUdiv">
     
-      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+      <table className="table table-bordered" style={{width:'50%',marginLeft:'100px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
             <th>First name</th>
             <th>Last name</th>
-            <th>Email</th>
+            <th>Image</th>
+            <th>Phone</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -59,7 +60,8 @@ function GetUser() {
               <td class="table-secondary">{item.id}</td>
               <td class="table-primary">{item.fname}</td>
               <td class="table-danger">{item.lname}</td>
-              <td class="table-info">{item.email}</td>
+              <td class="table-info"><img src={item.image} alt={item.name} width={"70px"}/></td>
+              <td class="table-warning">{item.phone}</td>
               <td class="table-light">
                 <Link to={`/aarteedit/${item.id}`}>
                   <button
@@ -80,14 +82,17 @@ function GetUser() {
               </td>
             </tr>
           ))}
+           <td colSpan="6" style={{ textAlign: 'right' }}> 
+           <Link to="/aarteadd"> <button class="btn btn-dark me-md-2" type="button"  style={{ width: '200px' }}>
+          <FaPlus />  <i className="fa fa-plus"></i> Add New
+        </button></Link>
+           </td>
         </tbody>
         
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/aarteadd"> <button class="btn btn-dark me-md-2" type="button">
-          <FaPlus />  <i className="fa fa-plus"></i> Add New
-        </button></Link>
-      </div>
+      {/* <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+       
+      </div> */}
       {/* <Link to="/aarteadd"> <button type="button" className="btn btn-info add-new">
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New
                                     </button></Link>  */}

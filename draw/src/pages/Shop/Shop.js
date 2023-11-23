@@ -53,7 +53,7 @@ const Shop = () => {
         <div>
           <img
             className="w-full h-full"
-            src={`/assets/${item.image}`}
+            src={item.image}
             alt={item.name}
             style={{ height: '250px' }}
           />

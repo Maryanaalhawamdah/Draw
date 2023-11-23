@@ -62,7 +62,7 @@ function GetUser() {
               <td class="table-success">{item.email}</td>
               <td class="table-info">{item.phone}</td>
               <td class="table-primary">{item.address}</td>
-              <td class="table-success"><img src={`/assets/${item.image}`} alt={item.name} width={"70px"}/></td>
+              <td class="table-success"><img src={item.image} alt={item.name} width={"70px"}/></td>
               <td class="table-light">
                 <Link to={`/aduedit/${item.id}`}>
                   <button
@@ -83,14 +83,17 @@ function GetUser() {
               </td>
             </tr>
           ))}
+                     <td colSpan="7" style={{ textAlign: 'right' }}> 
+                     <Link to="/aduser"> <button class="btn btn-dark me-md-2" type="button" style={{ width: '200px' }}>
+          <FaPlus />  Add New 
+        </button></Link>
+        </td>
         </tbody>
         
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
-        <Link to="/aduser"> <button class="btn btn-dark me-md-2" type="button" style={{ width: '200px' }}>
-          <FaPlus />  Add New 
-        </button></Link>
-      </div>
+      {/* <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+        
+      </div> */}
       {/* <Link to="/add"> <button type="button" className="btn btn-info add-new">
                                     <FaPlus />  <i className="fa fa-plus"></i> Add New
                                     </button></Link>  */}

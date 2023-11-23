@@ -27,10 +27,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $email = $user['email'];
         $address = $user['address'];
         $phone = $user['phone'];
-        $isAdmin = $user['isAdmin'];
+       
 
         // Perform the database update
-        $sql = "UPDATE customer SET fname = '$fname', lname = '$lname', email = '$email', address = '$address', phone = '$phone', isAdmin = '$isAdmin' WHERE id = '$id'";
+        $sql = "UPDATE admin SET fname = '$fname', lname = '$lname', email = '$email', address = '$address', phone = '$phone' WHERE id = '$id'";
 
         // Prepare and execute the SQL statement
         $stmt = $conn->prepare($sql);

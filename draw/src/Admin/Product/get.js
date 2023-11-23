@@ -64,7 +64,7 @@ function GetProduct() {
 
               <td class="table-secondary">{item.id}</td>
               <td class="table-danger">{item.name}</td>
-              <td class="table-success"> <img src={`/assets/${item.image}`} alt={item.name} width={"70px"}/></td>
+              <td class="table-success"> <img src={item.image} alt={item.name} width={"70px"}/></td>
               <td class="table-info">{item.description}</td>
               <td class="table-primary">{item.price}</td>
               
@@ -90,11 +90,8 @@ function GetProduct() {
 
             </tr>
           ))}
-        </tbody>
-        
-      </table>
-      <div className="d-grid gap-2 d-md-flex justify-content-md-end">
-  <Link to="/aadd">
+           <td colSpan="6" style={{ textAlign: 'right' }}> 
+           <Link to="/aadd">
     <button
       className="btn btn-dark me-md-2"
       type="button"
@@ -103,7 +100,13 @@ function GetProduct() {
       <FaPlus /> <i className="fa fa-plus"></i> Add New
     </button>
   </Link>
-</div>
+        </td>
+        </tbody>
+        
+      </table>
+      {/* <div className="d-grid gap-2 d-md-flex justify-content-md-end">
+
+</div> */}
 
        
       {/* <Link to="/addProdcut"> <button type="button" className="btn btn-info add-new">

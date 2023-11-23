@@ -45,7 +45,7 @@ function GetAdmins() {
 
     <div id="maindiv">
 
-      <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+      <table className="table table-bordered" style={{width:'60%',marginLeft:'100px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
@@ -86,13 +86,16 @@ function GetAdmins() {
               </td>
             </tr>
           ))}
+          <td colSpan="7" style={{ textAlign: 'right' }}>
+          <Link to="/aaadd"> <button class="btn btn-dark me-md-2" type="button"  style={{ width: '200px' }}>
+          <FaPlus />  <i className="fa fa-plus"></i> Add New
+        </button></Link>
+          </td>
         </tbody>
 
       </table>
       <div class="d-grid gap-2 d-md-flex justify-content-md-end">
-        <Link to="/add/admin"> <button class="btn btn-dark me-md-2" type="button">
-          <FaPlus />  <i className="fa fa-plus"></i> Add New
-        </button></Link>
+       
       </div>
 
     </div>

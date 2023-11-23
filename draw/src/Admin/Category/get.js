@@ -40,13 +40,13 @@ function GetCategories() {
                 <td class="table-secondary">{item.id}</td>
                 <td class="table-danger">{item.name}</td>
                 <td class="table-light">
-                  <Link to="/acatedit">
+                  <Link to={`/acatedit/${item.id}`}>
                     <button type="button" id="edit" className="btn btn-info add-new"
                   >
                     <i className="fa fa-plus"></i> Edit
                   </button>
                   </Link>
-                  <Link to="/acatdel">
+                  <Link to={`/acatdel/${item.id}`}>
                   <button type="button" id="del" className="btn btn-info add-new">
                     Delete
                   </button>
@@ -59,13 +59,19 @@ function GetCategories() {
               <td colSpan="3">No categories available.</td>
             </tr>
           )}
+          <tr>
+            <td colSpan="3" style={{ textAlign: 'right' }}> 
+            <Link to="/acatadd"> <button class="btn btn-dark me-md-2" type="button"  style={{ width: '200px' }}>
+          <FaPlus />   Add New
+        </button></Link></td>
+          </tr>
         </tbody>
       </table>
-      <div class="d-grid gap-2 d-md-flex justify-content-md-center">
+      {/* <div class="d-grid gap-2 d-md-flex justify-content-center">
         <Link to="/acatadd"> <button class="btn btn-dark me-md-2" type="button"  style={{ width: '200px' }}>
           <FaPlus />   Add New
         </button></Link>
-      </div>
+      </div> */}
       {/* <Link to="/add/category">
         <button type="button" className="btn btn-info add-new">
           Add New

@@ -57,7 +57,7 @@ function Add() {
     </div>
         <div id="addAdmin">
             <form id="form" onSubmit={submitData}>
-                <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+                <table className="table table-bordered" style={{width:'60%',marginLeft:'120px'}}>
                     <thead>
                         <tr class="table-dark">
 

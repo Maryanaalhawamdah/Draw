@@ -13,7 +13,7 @@ if (isset($_GET['id'])) {
    
     $id = $_GET['id'];
 
-    $sql = 'DELETE FROM customer
+    $sql = 'DELETE FROM admin
     WHERE id = :id';
 
 $statement = $conn->prepare($sql);

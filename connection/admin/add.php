@@ -17,10 +17,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $password = $user['password'];
     $address = $user['address'];
     $phone = $user['phone'];
-    $isAdmin = 1;
+   
 
-    $sql = "INSERT INTO customer (fname, lname, email, password, phone, address, isAdmin) 
-            VALUES ('$fname', '$lname', '$email', '$password', '$phone', '$address', '$isAdmin')";
+    $sql = "INSERT INTO admin (fname, lname, email, password, phone, address) 
+            VALUES ('$fname', '$lname', '$email', '$password', '$phone', '$address')";
 
     try {
         $conn->exec($sql);
