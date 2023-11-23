@@ -55,9 +55,9 @@ function Add() {
         <div className='sidebar'>
       <Sidebar />
     </div>
-        <div id="ediCtmaindiv">
+        <div >
         <form id="form" onSubmit={submitData}>
-            <table className="table table-bordered" >
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'150px'}}>
                 <thead>
                     <tr class="table-dark">
                        

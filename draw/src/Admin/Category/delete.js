@@ -8,10 +8,10 @@ function Delete() {
     const navigate = useNavigate();
 
     useEffect(() => {
-        const url = 'http://localhost/DRAW/connection/category/delete.php';
+        const url = `http://localhost/DRAW/connection/category/delete.php?id=${id}`;
 
         // Send the ID in the request body
-        axios.delete(url, { data: { id: id } })
+        axios.delete(url)
             .then(response => {
                 console.log("Category deleted:", response.data);
                 navigate('/acategory');

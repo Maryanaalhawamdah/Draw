@@ -67,7 +67,7 @@ function GetAdmins() {
               <td class="table-info">{item.address}</td>
               <td class="table-primary">{item.phone}</td>
               <td class="table-light">
-                <Link to={`/edit/admin/${item.id}`}>
+                <Link to={`/aaedit/${item.id}`}>
                   <button
                     type="button"
                     id="edit"
@@ -78,7 +78,7 @@ function GetAdmins() {
                   </button>
                 </Link>
                 <span> </span>
-                <Link to={`/delete/admin/${item.id}`}>
+                <Link to={`/aadelete/${item.id}`}>
                   <button type="button" id="del" className="btn btn-info add-new">
                     Delete
                   </button>

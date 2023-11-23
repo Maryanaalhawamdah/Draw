@@ -36,7 +36,7 @@ function Add() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/admins');
+                navigate('/aadmin');
 
 
                 console.log(inputs)

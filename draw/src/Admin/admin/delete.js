@@ -12,7 +12,7 @@ function Delete() {
         axios.delete(url)
             .then(response => {
                 console.log("User deleted:", response.data);
-                navigate('/admins');
+                navigate('/aadmin');
 
             })
             .catch(error => {

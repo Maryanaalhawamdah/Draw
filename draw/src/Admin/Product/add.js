@@ -8,60 +8,56 @@ import Header from "../adminHome/header";
 function Add() {
     const navigate = useNavigate();
 
-    const initialFormState = {
+   
+
+    const [inputs, setInputs] = useState({
         name: '',
-        image: '',
+        image: null,
         description: '',
-        price: '',
+        price: 0,
         categories: ''
-    };
+    });
+   
+    const changed = (e) => {
+        const { name, value, type, files } = e.target;
+        const inputValue = type === 'file' ? files[0] : value;
 
-    const [formData, setFormData] = useState(initialFormState);
-    const [error, setError] = useState('');
+        setInputs(prevInputs => ({
+            ...prevInputs,
+            [name]: inputValue
+        }));
+    }
+   
 
-    const handleInputChange = (e) => {
-        const { name, value, files } = e.target;
+    const submitData = (e) => {
+    e.preventDefault();
 
-        if (name === "image") {
-            setFormData({
-                ...formData,
-                [name]: files[0]
-            });
-        } else {
-            setFormData({
-                ...formData,
-                [name]: value
-            });
-        }
-    };
+    const formData = new FormData();
+    for (const key in inputs) {
+        formData.append(key, inputs[key]);
+    }
 
-    const submitData = async (e) => {
-        e.preventDefault();
+    console.log("Form Data:", inputs);
         const url = 'http://localhost/DRAW/connection/products/add.php';
 
-        const data = new FormData();
+        axios.post(url, inputs)
 
-        for (const key in formData) {
-            data.append(key, formData[key]);
-        }
-
-        try {
-            const response = await axios.post(url, data);
+        .then(response => {
             console.log("Response from PHP:", response.data);
             navigate('/apget');
-            setFormData(initialFormState); // Clear the form
-        } catch (error) {
-            console.error("Error:", error);
 
-            if (error.response) {
-                setError(`Server Error: ${error.response.status}`);
-            } else if (error.request) {
-                setError("No response received from the server");
-            } else {
-                setError("An error occurred while submitting the form.");
-            }
-        }
-    };
+
+            console.log(inputs)
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+
+    // console.log("Request Data:", inputs);
+
+};
+       
+    
 
     return (
         <main className='main-container-fixed'>
@@ -71,7 +67,7 @@ function Add() {
             </div>
             <div id="editPmaindiv">
                 <form id="form" onSubmit={submitData}>
-                    <table className="table table-bordered" style={{ width: '70%', marginLeft: '170px' }}>
+                    <table className="table table-bordered" style={{ width: '70%', marginLeft: '190px' }}>
                         <thead>
                             <tr className="table-dark">
                                 <th>Name</th>
@@ -84,18 +80,18 @@ function Add() {
                         </thead>
                         <tbody>
                             <tr>
-                                <td className="table-secondary"><input type="text" required name="name" value={formData.name} onChange={handleInputChange} /></td>
-                                <td className="table-info"><input type="file" required name="image" onChange={handleInputChange} /></td>
-                                <td className="table-success"><input type="text" required name="description" value={formData.description} onChange={handleInputChange} /></td>
-                                <td className="table-danger"><input type="number" required name="price" value={formData.price} onChange={handleInputChange} /></td>
-                                <td className="table-primary"><input type="text" required name="categories" value={formData.categories} onChange={handleInputChange} /></td>
+                                <td className="table-secondary"><input type="text" required name="name"  onChange={changed} /></td>
+                                <td className="table-info"><input type="file" required name="image" onChange={changed} /></td>
+                                <td className="table-success"><input type="text" required name="description" onChange={changed} /></td>
+                                <td className="table-danger"><input type="number" required name="price"  onChange={changed} /></td>
+                                <td className="table-primary"><input type="text" required name="categories"  onChange={changed} /></td>
                                 <td className="table-light">
                                     <button type="submit" className="btn btn-info add-new">Add</button>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    {error && <div className="alert alert-danger">{error}</div>}
+                   
                 </form>
             </div>
         </main>
