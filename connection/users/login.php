@@ -1,39 +1,68 @@
-<?php
-header("Access-Control-Allow-Origin: http://localhost:3000");
-header("Access-Control-Allow-Methods: POST, OPTIONS");
-header("Access-Control-Allow-Headers: Content-Type");
-header("Access-Control-Allow-Credentials: true");
-header("Content-Type: application/json; charset=UTF-8");
+<!-- <?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
+header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
+header("Content-type: application/json");
 
-// Handle preflight (OPTIONS) request
-if ($_SERVER['REQUEST_METHOD'] === 'OPTIONS') {
-    header("Access-Control-Allow-Credentials: true");
-    header("Access-Control-Allow-Methods: POST, OPTIONS");
-    header("Access-Control-Allow-Headers: Content-Type");
-    http_response_code(200);
-    exit;
-}
+
 
 
 // Continue with your regular script logic below
 require_once '../conn.php';
 
-$data = json_decode(file_get_contents("php://input"));
-
-if (isset($data->email, $data->password)) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents("php://input"));
     $email = $data->email;
     $password = $data->password;
 
-    // Validate user credentials (you may need to improve this based on your authentication logic)
-    $stmt = $pdo->prepare("SELECT * FROM users WHERE email = ? AND password = ?");
-    $stmt->execute([$email, $password]);
-    $user = $stmt->fetch(PDO::FETCH_ASSOC);
+    $stmt = $pdo->prepare("SELECT * FROM Users WHERE Email = ?");
+    $stmt->execute([$email]);
 
-    if ($user) {
-        echo json_encode(["success" => true, "message" => "Login successful"]);
+    $user = $stmt->fetch();
+    if ($user && password_verify($password, $user['Password'])) {
+        echo json_encode(['success' => true, 'message' => 'Login successful', 'UserId'=>$user['UserId']]);
+
+
     } else {
-        echo json_encode(["success" => false, "message" => "Invalid email or password"]);
+        // Passwords do not match, login failed
+        echo json_encode(['success' => false, 'message' => 'Login failed. Please check your credentials.']);
     }
 } else {
-    echo json_encode(["success" => false, "message" => "Invalid request"]);
+    echo json_encode(['success' => false, 'message' => 'Invalid request method']);
 }
+?> -->
+
+<?php
+header('Access-Control-Allow-Origin: *');
+header("Access-Control-Allow-Methods: POST");
+header("Access-Control-Allow-Headers: Content-Type");
+header("Content-type: application/json");
+
+require_once '../conn.php';
+
+if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+    $data = json_decode(file_get_contents("php://input"));
+    $email = $data->email;
+    $password = $data->password;
+    $response=array();
+    $sql="SELECT * FROM `users` WHERE `email`='$email'";
+    $result=$conn->query($sql);
+    if($result->num_rows > 0){
+        $row=$result->fetch_assoc();
+
+        if (password_verify($password, $row['password'])) {
+            session_start();
+            $_SESSION['id']=$row['id'];
+            $_SESSION['fname']=$row['fname'];
+            echo json_encode(['success' => true, 'message' => 'Login successful', 'id'=>$row['id']]);
+        }else{
+            echo json_encode(['success' => false, 'message' => 'Login failed. Please check your credentials.']);
+        }
+    }else{
+        echo json_encode(['success' => false, 'message' => 'Invalid request method']);
+
+    }
+    // echo json_encode($response);
+}
+?>
+

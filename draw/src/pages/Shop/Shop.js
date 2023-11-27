@@ -48,7 +48,7 @@ const Shop = () => {
       {/* Your product cards */}
       <div className="w-full relative group flex flex-wrap">
   {items.map((item, index) => (
-    <div key={index} className="max-w-80 w-full lg:w-1/3 relative overflow-y-hidden">
+    <div key={index} className="max-w-80 w-full lg:w-1/3 relative overflow-y-hidden" style={{margin:'2%'}}>
       <div>
         <div>
           <img
@@ -96,12 +96,12 @@ const Shop = () => {
                 <MdOutlineLabelImportant />
               </span>
             </li>
-            <li className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full">
+            {/* <li className="text-[#767676] hover:text-primeColor text-sm font-normal border-b-[1px] border-b-gray-200 hover:border-b-primeColor flex items-center justify-end gap-2 hover:cursor-pointer pb-1 duration-300 w-full">
               Add to Wish List
               <span>
                 <BsSuitHeartFill />
               </span>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

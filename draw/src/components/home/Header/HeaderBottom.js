@@ -1,11 +1,12 @@
 import React, { useState, useRef, useEffect } from "react";
 import { motion } from "framer-motion";
 import { HiOutlineMenuAlt4 } from "react-icons/hi";
-import { FaSearch, FaUser, FaCaretDown, FaShoppingCart } from "react-icons/fa";
+import { FaSearch, FaUser, FaCaretDown,FaUserCog, FaShoppingCart } from "react-icons/fa";
 import Flex from "../../designLayouts/Flex";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { paginationItems } from "../../../constants";
+import { FiLogOut } from 'react-icons/fi';
 
 const HeaderBottom = () => {
   const products = useSelector((state) => state.orebiReducer.products);
@@ -130,7 +131,7 @@ const HeaderBottom = () => {
               </div>
             )}
           </div>
-          <div className="flex gap-4 mt-2 lg:mt-0 items-center pr-6 cursor-pointer relative">
+          {/* <div className="flex gap-4 mt-2 lg:mt-0 items-center pr-6 cursor-pointer relative">
             <div onClick={() => setShowUser(!showUser)} className="flex">
               <FaUser />
               <FaCaretDown />
@@ -152,7 +153,7 @@ const HeaderBottom = () => {
                     Sign Up
                   </li>
                 </Link>
-                <Link to ="/">
+                <Link to ="/profile">
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
                   Profile
                 </li>
@@ -170,7 +171,40 @@ const HeaderBottom = () => {
                 </span>
               </div>
             </Link>
-          </div>
+          </div> */}
+           <div>
+        {localStorage.getItem('login') === 'true'  ? (
+            <div id="loggedin" style={{color:'black'}}>
+                <h1>Welcome</h1>
+                <Link to={`/profile`}>
+                    <FaUserCog style={{fontSize:'30px'}}/>
+                </Link>
+                <br />
+                <Link to={`/cart`}>
+                    <FaShoppingCart style={{fontSize:'30px'}} />
+                </Link>
+                <br />
+                <FiLogOut style={{fontSize:'30px'}} onClick={() => {
+                    localStorage.setItem('login','false');
+                    window.location.reload();
+                  }}/>
+                  
+            </div>
+      ) : (
+            <div style={{color:'black'}}>
+                <Link to={`/signin`}>
+                    <button style={{color:'black'}}>Login</button>
+                </Link>
+                {" "}
+                <Link to={`/signup`}>
+                    <button style={{color:'black'}}>Sign Up</button>
+                </Link>
+                
+            </div>
+      )}
+
+      
+    </div>
         </Flex>
       </div>
     </div>

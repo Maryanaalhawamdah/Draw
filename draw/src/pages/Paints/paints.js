@@ -48,16 +48,16 @@ const Paints = () => {
     </div>
 
     {/* Right side cards */}
-    <div className="w-3/4">
+    <div className="w-3/4" >
       {/* Your product cards */}
-      <div className="w-full relative group flex flex-wrap">
+      <div className="w-full relative group flex flex-wrap" >
   {items.map((item, index) => (
-    <div key={index} className="max-w-80 w-full lg:w-1/3 relative overflow-y-hidden">
+    <div key={index} className="max-w-80 w-full lg:w-1/3 relative overflow-y-hidden" style={{margin:'2%'}}>
       <div>
         <div>
           <img
             className="w-full h-full"
-            src={`/assets/${item.image}`}
+            src={item.image}
             alt={item.name}
             style={{ height: '250px' }}
           />

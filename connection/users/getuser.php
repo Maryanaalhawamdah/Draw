@@ -13,7 +13,7 @@ include_once("../conn.php");
 
   echo $id;
 
-  $query = "SELECT * FROM customer WHERE id = $id";
+  $query = "SELECT * FROM users WHERE id = $id";
   $ret = $conn->query($query);
   $data = $ret->fetchAll(PDO::FETCH_ASSOC);
  echo json_encode($data);

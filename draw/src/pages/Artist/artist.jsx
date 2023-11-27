@@ -23,7 +23,7 @@ const Artist = () => {
         <div key={index} className="card mb-3" style={{ maxWidth: '540px' }}>
           <div className="row no-gutters">
             <div className="col-md-4">
-              <img src={`/assets/${item.image}`} alt={item.name} className="artists"/>
+              <img src={item.image} alt={item.name} className="artists"/>
             </div>
             <br/>
             <div className="col-md-8">
