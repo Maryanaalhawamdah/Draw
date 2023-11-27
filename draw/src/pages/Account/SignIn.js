@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import axios from 'axios';
-
+import './style.css';
 
 export default function Login() {
     const [formData, setFormData] = useState({
@@ -11,6 +11,7 @@ export default function Login() {
       });
     
       const [error, setError] = useState(null);
+      const [loading, setLoading] = useState(false);
       const navigate = useNavigate();
     
       const handleInputChange = (event) => {
@@ -23,6 +24,7 @@ export default function Login() {
         const url = 'http://localhost/DRAW/connection/users/login.php';
       
         try {
+          setLoading(true);
           const response = await axios.post(url, formData);
       
           if (response.data.success) {
@@ -37,16 +39,19 @@ export default function Login() {
         } catch (error) {
           console.error('Error:', error);
           setError('An error occurred during login.');
+        } finally {
+          setLoading(false); // Reset loading state
         }
       };
     
       return (
-        <section className="login pt-100" style={{color:'black'}}>
-          <div className="container">
-            <div className="billing-details">
-              <h2 className="checkout-title text-uppercase text-center mb-30">
-                CUSTOMER LOGIN
-              </h2>
+        <section className="container pt-100" style={{color:'black'}}>
+          <div className="login-container">
+          <div className="form-container">
+                <img src="https://raw.githubusercontent.com/hicodersofficial/glassmorphism-login-form/master/assets/illustration.png" alt="illustration" className="illustration" />
+                <h1 className="opacity">LOGIN</h1>
+           
+             
               <form className="checkout-form" onSubmit={handleSubmit}>
                 <div className="form-group">
                   <label className="form-label">Email address</label>
@@ -57,6 +62,7 @@ export default function Login() {
                     required
                     name="email"
                     onChange={handleInputChange}
+                    style={{margin:'2rem 0'}}
                   />
                 </div>
                 <div className="form-group">
@@ -78,19 +84,21 @@ export default function Login() {
                         name="submit"
                         type="submit"
                         className="btn btn-color right-side"
+                        disabled={loading ? true : false}
                       >
                         Log In
                       </button>
                     </div>
                   </div>
                 </div>
-                <div className="new-account text-center mt-20">
+               
+              </form>
+              <div className="new-account text-center mt-20">
                   <span>Don't have an account?</span>
                   <Link to="/signup" className="link" title="Create New Account">
                     Create New Account
                   </Link>
                 </div>
-              </form>
             </div>
           </div>
         </section>
