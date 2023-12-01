@@ -6,7 +6,9 @@ import Flex from "../../designLayouts/Flex";
 import { Link, useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import { paginationItems } from "../../../constants";
-import { FiLogOut } from 'react-icons/fi';
+import { FiLogOut ,FiLogIn} from 'react-icons/fi';
+import { SiGnuprivacyguard } from "react-icons/si";
+
 
 const HeaderBottom = () => {
   const products = useSelector((state) => state.orebiReducer.products);
@@ -59,22 +61,34 @@ const HeaderBottom = () => {
                 className="absolute top-36 z-50 bg-primeColor w-auto text-[#767676] h-auto p-4 pb-6"
               >
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                  <Link to="/accessories">
                   Accessories
+                  </Link>
                 </li>
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
-                Canvas and Surfaces
+               <Link to="/canvas">
+                  Canvas and Surfaces
+                  </Link> 
                 </li>
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                <Link to="/brushes">
                 Brushes
+                </Link> 
                 </li>
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400 hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                <Link to="/paints">
                 Paints
+                </Link>
                 </li>
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                <Link to="/color">
                 Color
+                </Link>
                 </li>
                 <li className="text-gray-400 px-4 py-1 border-b-[1px] border-b-gray-400  hover:border-b-white hover:text-white duration-300 cursor-pointer">
+                <Link to="/drawingtools">
                 Drawing Tools
+                </Link>
                 </li>
               </motion.ul>
             )}
@@ -193,11 +207,11 @@ const HeaderBottom = () => {
       ) : (
             <div style={{color:'black'}}>
                 <Link to={`/signin`}>
-                    <button style={{color:'black'}}>Login</button>
+                    <FiLogIn  style={{color:'black',width:'30px'}}/>
                 </Link>
                 {" "}
                 <Link to={`/signup`}>
-                    <button style={{color:'black'}}>Sign Up</button>
+                <SiGnuprivacyguard  style={{color:'black' ,width:'30px'}}/>
                 </Link>
                 
             </div>

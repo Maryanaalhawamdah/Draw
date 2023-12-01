@@ -20,7 +20,7 @@ const Artist = () => {
     return (
       <div className="w-full relative group flex flex-wrap">
       {items.map((item, index) => (
-        <div key={index} className="card mb-3" style={{ maxWidth: '540px' }}>
+        <div key={index} className="card1 mb-3" style={{ maxWidth: '540px' }}>
           <div className="row no-gutters">
             <div className="col-md-4">
               <img src={item.image} alt={item.name} className="artists"/>

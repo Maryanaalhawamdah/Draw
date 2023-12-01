@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
+import axios from 'axios';
 import Breadcrumbs from "../../components/pageProps/Breadcrumbs";
 const Contact = () => {
   const location = useLocation();
@@ -40,8 +41,11 @@ const Contact = () => {
   };
   // ================= Email Validation End here ===============
 
-  const handlePost = (e) => {
+  const handlePost = async (e) => {
     e.preventDefault();
+    setErrClientName("");
+    setErrEmail("");
+    setErrMessages("");
     if (!clientName) {
       setErrClientName("Enter your Name");
     }
@@ -56,14 +60,34 @@ const Contact = () => {
       setErrMessages("Enter your Messages");
     }
     if (clientName && email && EmailValidation(email) && messages) {
-      setSuccessMsg(
-        `Thank you dear ${clientName}, Your messages has been received successfully. Futher details will sent to you by your email at ${email}.`
-      );
+      try {
+        const response = await axios.post('http://localhost/DRAW/connection/messages/add.php', {
+          clientName,
+          email,
+          messages,
+        });
+        if (response.status === 201) {
+          setSuccessMsg(`Thank you, ${clientName}! Your message has been received.`);
+          // Clear input fields after successful submission if needed
+          setclientName("");
+          setEmail("");
+          setMessages("");
+        } else {
+          // Handle server errors
+          console.error('Server error:', response.statusText);
+        setSuccessMsg(`Thank you, ${clientName}! Your message has been received..`);
+      
+        }
+      } catch (error) {
+        console.error('Network error:', error);
+        setSuccessMsg("Error submitting your message. Please try again.");
+      }
     }
   };
+  
 
   return (
-    <div className="max-w-container mx-auto px-4">
+    <div className="max-w-container mx-auto px-4" style={{color:'black'}}>
     <Breadcrumbs title="Contact" prevLocation={prevLocation} />
     {successMsg ? (
       <p className="pb-20 w-96 font-medium text-green-500">{successMsg}</p>

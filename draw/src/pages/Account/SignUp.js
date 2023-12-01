@@ -235,7 +235,7 @@ export default function Signup() {
                 </div>
                 <div className="new-account text-center mt-20">
                   <span>Already have an account ?</span>
-                  <Link to={`/signin`}>Log in </Link>
+                  <Link to="/signin">Log in </Link>
                  
                 </div>
               </form>

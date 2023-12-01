@@ -10,44 +10,44 @@ import {
 
 const SpecialOffers = () => {
   return (
-    <div className="w-full pb-20">
+    <div className="w-full pb-20" style={{color:'black'}}>
       <Heading heading="Special Offers" />
       <div className="w-full grid grid-cols-1 md:grid-cols-2 lgl:grid-cols-3 xl:grid-cols-4 gap-10">
         <Product
           _id="1101"
           img={spfOne}
-          productName="Cap for Boys"
+          productName="Chalky colours"
           price="35.00"
           color="Blank and White"
           badge={true}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="Making art with pastels produces gorgeous colours, and can be immersed in them without the need for a paintbrush, solvent or palette. All a painter needs to get started is some pastels and a sheet of paper."
         />
         <Product
           _id="1102"
           img={spfTwo}
-          productName="Tea Table"
-          price="180.00"
+          productName="Eraser"
+          price="80.00"
           color="Gray"
           badge={true}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="all kind of erasers you will find for all uses ."
         />
         <Product
           _id="1103"
           img={spfThree}
-          productName="Headphones"
+          productName="Brushes"
           price="25.00"
           color="Mixed"
           badge={true}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="High quality you can use it more than one time ."
         />
         <Product
           _id="1104"
           img={spfFour}
-          productName="Sun glasses"
+          productName="Acrylic Color"
           price="220.00"
           color="Black"
           badge={true}
-          des="Lorem ipsum dolor sit amet consectetur adipisicing elit. Hic excepturi quibusdam odio deleniti reprehenderit facilis."
+          des="Acrylic paint is a fast-drying paint made of pigment suspended in acrylic polymer emulsion and plasticizers, silicone oils, defoamers, stabilizers, or metal."
         />
       </div>
     </div>

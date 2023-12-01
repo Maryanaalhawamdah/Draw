@@ -48,6 +48,12 @@ import AArtist from "./Admin/artists/get";
 import AArtadd from "./Admin/artists/add";
 import AArtedit from "./Admin/artists/edit";
 import AArtdel from "./Admin/artists/delete";
+import AMessages from "./Admin/messages/get";
+import Accessories from "./pages/categories/accessories";
+import Canvas from "./pages/categories/canvas";
+import Brushes from "./pages/categories/brushes";
+import Color from "./pages/categories/color";
+import Drawingtools from "./pages/categories/drawingtools";
 
  const Layout = () => {
   return (
@@ -75,6 +81,11 @@ const router = createBrowserRouter(
         <Route path="/artist" element={<Artist />}></Route>
         <Route path="*" element={<NotFound/>} />
         <Route path="/paints" element={<Paints/>} />
+        <Route path="/accessories" element={<Accessories/>}></Route>
+      <Route path="/canvas" element={<Canvas/>}></Route>
+      <Route path="/brushes" element={<Brushes/>}></Route>
+      <Route path="/color" element={<Color/>}></Route>
+      <Route path="/drawingtools" element={<Drawingtools/>}></Route>
         {/* ==================== Header Navlink End here ===================== */}
         <Route path="/offer" element={<Offer />}></Route>
         <Route path="/product/:_id" element={<ProductDetails />}></Route>
@@ -107,6 +118,8 @@ const router = createBrowserRouter(
       <Route path="/aarteedit/:id" element={<AArtedit/>}></Route>
       <Route path="/aartedelete/:id" element={<AArtdel/>}></Route>
       <Route path="/specialcase" element={<SpecialCase/>}> </Route>
+      <Route path="/messages" element={<AMessages/>}></Route>
+      
     </Route>,
     
    

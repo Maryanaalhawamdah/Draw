@@ -13,7 +13,7 @@ function GetOrders() {
   
 
   useEffect(() => {
-    axios.get('http://localhost/DRAW/connection/orders/orders.php')
+    axios.get('http://localhost/DRAW/connection/messages/get.php')
       .then(response => {
         setData(response.data);
       })
@@ -26,7 +26,7 @@ function GetOrders() {
 
   const sentid = (id) => {
     
-    axios.post('http://localhost/Art-Magic/connection/orders/orders.php',  id )
+    axios.post('http://localhost/DRAW/connection/messages/get.php',  id )
       .then(response => {
         // Handle the response, e.g., redirect to the edit page
         console.log('this the php :'+response.data);
@@ -45,32 +45,25 @@ function GetOrders() {
 </div>
     <div id="mainOdiv">
       
-      <table className="table table-bordered" style={{width:'55%',marginLeft:'100px'}}>
+      <table class="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>
-            <th>User id </th>
-            <th>Name</th>
-            <th>Phone</th>
-            <th>Total products</th>
-            <th>Total price</th>
-            <th>Payment status</th>
-            <th>Address</th>
+            <th>Client Name</th>
+            <th>Email</th>
+            <th>Messages</th>
+           
           </tr>
         </thead>
         <tbody>
           {data.map(item => (
             <tr key={item.id}>
 
-              <td className="table-secondary">{item.id}</td>
-              <td className="table-Primary">{item.user_id}</td>
-              <td className="table-Success">{item.name}</td>
-              <td className="table-Danger">{item.phone}</td>
-              <td className="table-Warning">{item.total_products}</td>
-              <td className="table-Info">{item.total_price}</td>
-              <td className="table-secondaryInfo">{item.payment_status}</td>
-              <td className="table-secondary">{item.address}</td>
-              
+              <td class="table-secondary">{item.id}</td>
+              <td class="table-Success">{item.clientName}</td>
+              <td class="table-Warning">{item.email}</td>
+              <td class="table-Primary">{item.messages}</td>
+                           
               
             </tr>
           ))}

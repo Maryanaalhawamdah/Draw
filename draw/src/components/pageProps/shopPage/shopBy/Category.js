@@ -8,12 +8,12 @@ const Category = () => {
   const items = [
     {
       _id: 990,
-      title: "New Arrivals",
+      title: "Paints",
       icons: true,
     },
     {
       _id: 991,
-      title: "Gudgets",
+      title: "Color",
     },
     {
       _id: 992,
@@ -22,11 +22,11 @@ const Category = () => {
     },
     {
       _id: 993,
-      title: "Electronics",
+      title: "Canvas",
     },
     {
       _id: 994,
-      title: "Others",
+      title: "Brushes",
     },
   ];
   return (

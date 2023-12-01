@@ -46,11 +46,12 @@ function GetUser() {
         <thead>
         <tr class="table-dark">
             <th>Id</th>
-            <th>clientName</th>            
+            <th>Fname</th> 
+            <th>Lname</th>           
             <th>Email</th>
             <th>Phone</th>
+            <th>City</th>
             <th>Address</th>
-            <th>Image</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -58,11 +59,13 @@ function GetUser() {
           {Array.isArray(data) && data.map(item => (
             <tr key={item.id}>
               <td class="table-secondary">{item.id}</td>
-              <td class="table-danger">{item.clientName}</td>
-              <td class="table-success">{item.email}</td>
+              <td class="table-danger">{item.fname}</td>
+              <td class="table-success">{item.lname}</td>
+              <td class="table-secondary">{item.email}</td>
               <td class="table-info">{item.phone}</td>
+              <td class="table-success">{item.city}</td>
               <td class="table-primary">{item.address}</td>
-              <td class="table-success"><img src={item.image} alt={item.name} width={"70px"}/></td>
+             
               <td class="table-light">
                 <Link to={`/aduedit/${item.id}`}>
                   <button
@@ -83,7 +86,7 @@ function GetUser() {
               </td>
             </tr>
           ))}
-                     <td colSpan="7" style={{ textAlign: 'right' }}> 
+                     <td colSpan="8" style={{ textAlign: 'right' }}> 
                      <Link to="/aduser"> <button class="btn btn-dark me-md-2" type="button" style={{ width: '200px' }}>
           <FaPlus />  Add New 
         </button></Link>
