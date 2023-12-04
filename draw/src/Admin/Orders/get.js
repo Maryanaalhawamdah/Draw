@@ -50,11 +50,10 @@ function GetOrders() {
           <tr class="table-dark">
             <th>Id</th>
             <th>User id </th>
-            <th>Name</th>
-            <th>Phone</th>
+            <th>Name</th>            
             <th>Total products</th>
+            <th>Order date</th>
             <th>Total price</th>
-            <th>Payment status</th>
             <th>Address</th>
           </tr>
         </thead>
@@ -63,12 +62,11 @@ function GetOrders() {
             <tr key={item.id}>
 
               <td className="table-secondary">{item.id}</td>
-              <td className="table-Primary">{item.user_id}</td>
-              <td className="table-Success">{item.name}</td>
-              <td className="table-Danger">{item.phone}</td>
-              <td className="table-Warning">{item.total_products}</td>
+              <td className="table-Primary">{item.customer_id}</td>
+              <td className="table-Success">{item.clientName}</td>
+              <td className="table-Danger">{item.Qty}</td>
+              <td className="table-Warning">{item.order_date}</td>
               <td className="table-Info">{item.total_price}</td>
-              <td className="table-secondaryInfo">{item.payment_status}</td>
               <td className="table-secondary">{item.address}</td>
               
               

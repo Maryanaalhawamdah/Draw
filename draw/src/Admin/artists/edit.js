@@ -17,7 +17,7 @@ function Edit() {
    
 
     useEffect(() => {
-        axios.get('http://localhost/DRAW/connection/artists/get.php')
+        axios.get(`http://localhost/DRAW/connection/artists/get.php?id=${id}`)
             .then(response => {
                 console.log(response); 
                 setData(response.data);
@@ -44,7 +44,7 @@ function Edit() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/users');
+                navigate('/aartist');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -66,13 +66,14 @@ return (
 </div>
     <div id="editUmaindiv">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'160px'}}>
                 <thead>
-                    <tr>
+                    <tr class="table-dark">
                         <th>Id</th>
                         <th>First name</th>
                         <th>Last name</th>
-                        <th>Email</th>
+                        <th>Image</th>
+                        <th>Phone</th>
                         <th>Action</th>
                     </tr>
                 </thead>
@@ -85,7 +86,8 @@ return (
                         <td class="table-primary"><input type="text" value={data.id} name="id" onChange={changed} /></td>
                         <td class="table-info"><input type="text" required placeholder={data.fname} name="fname" onChange={changed} /></td>
                         <td class="table-light"><input type="text" required placeholder={data.lname} name="lname" onChange={changed} /></td>
-                        <td class="table-success"><input type="text" required placeholder={data.email} name="email" onChange={changed} /></td>
+                        <td class="table-success"><input type="text" required placeholder={data.image} name="image" onChange={changed} /></td>
+                        <td class="table-primary"><input type="text" value={data.phone} name="phone" onChange={changed} /></td>
                         <td class="table-light">
                             <button type="submit" className="btn btn-info add-new">Save</button>
                         </td>

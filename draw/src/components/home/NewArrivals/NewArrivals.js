@@ -47,7 +47,7 @@ const NewArrivals = () => {
     ],
   };
   return (
-    <div className="w-full pb-16">
+    <div className="w-full pb-16" style={{color:'black'}}>
       <Heading heading="New Arrivals" />
       <Slider {...settings}>
         <div className="px-2">

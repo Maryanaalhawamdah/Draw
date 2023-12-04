@@ -43,7 +43,7 @@ function GetUser() {
 </div>
     <div id="mainUdiv">
     
-      <table className="table table-bordered" style={{width:'50%',marginLeft:'100px'}}>
+      <table className="table table-bordered" style={{width:'50%',marginLeft:'130px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>

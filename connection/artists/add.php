@@ -21,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $phone = $user['phone'];
 
         // Perform the database insertion
-        $sql = "INSERT INTO artists (name, email, password) 
+        $sql = "INSERT INTO artists (fname, lname, image,phone) 
                 VALUES ('$fname', '$lname', '$image', '$phone')";
         
         // Prepare and execute the SQL statement

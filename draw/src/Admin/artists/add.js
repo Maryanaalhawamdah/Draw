@@ -14,17 +14,30 @@ function Add() {
 
     const navigate = useNavigate();
 
-    const [inputs , setInputs ] = useState({});
+    const [inputs , setInputs ] = useState({ fname:'',
+    lname:'',
+    image:null,
+    phone:''
+   });
 
-    const changed = (e) =>{
-        const name  = e.target.name;
-        const value = e.target.value;
-        setInputs(values => ({...values , [name]: value}));
-    
+   const changed = (e) => {
+    const { name, value, type, files } = e.target;
+    const inputValue = type === 'file' ? files[0] : value;
+
+    setInputs(prevInputs => ({
+        ...prevInputs,
+        [name]: inputValue
+    }));
+
     }
     
     const submitData = (e) =>{
         e.preventDefault();
+
+        const formData = new FormData();
+        for (const key in inputs) {
+            formData.append(key, inputs[key]);
+        }
 
         console.log("Form Data:", inputs);
 
@@ -36,7 +49,7 @@ function Add() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/users');
+                navigate('/aartist');
                 console.log(inputs)
             })
             .catch(error => {
@@ -55,7 +68,7 @@ function Add() {
     </div>
         <div id="editUmaindiv">
         <form id="form" onSubmit={submitData}>
-            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'170px'}}>
                 <thead>
                     <tr class="table-dark">
                        
@@ -75,7 +88,7 @@ function Add() {
                         
                         <td class="table-danger"><input type="text" required name="fname" onChange={changed} /></td>
                         <td class="table-secondary"><input type="text" required name="lname" onChange={changed} /></td>
-                        <td class="table-success"><input type="text" required name="image" onChange={changed} /></td>
+                        <td class="table-success"><input type="file" required name="image" onChange={changed} /></td>
                         <td class="table-primary"><input type="text" required name="phone" onChange={changed} /></td>
                         <td class="table-dark">
                             <button type="submit" className="btn btn-info add-new">Add</button>
