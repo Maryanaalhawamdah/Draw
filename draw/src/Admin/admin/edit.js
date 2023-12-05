@@ -25,7 +25,7 @@ function Edit() {
             .catch(error => {
                 console.error('Error:', error);
             });
-    }, []);
+    }, [id]);
 
 
     const [inputs , setInputs ] = useState({});
@@ -44,7 +44,7 @@ function Edit() {
             .then(response => {
                 console.log("Response from PHP:", response.data);
 
-                navigate('/admins');
+                navigate('/aadmin');
             })
             .catch(error => {
                 console.error("Error:", error);
@@ -66,7 +66,7 @@ return (
 </div>
     <div id="addAdmin">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'150px'}}>
                 <thead>
                     <tr class="table-dark">
                         <th>Id</th>
@@ -85,11 +85,11 @@ return (
                     
                     <tr>
                         <td class="table-secondary"><input type="text" value="" name="id" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required placeholder="" name="fname" onChange={changed} /></td>
-                        <td class="table-success"><input type="text" required placeholder="" name="lname" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required placeholder="" name="email" onChange={changed} /></td>
-                        <td class="table-info"><input type="text" required placeholder="" name="phone" onChange={changed} /></td>
-                        <td class="table-primary"><input type="text" required placeholder="" name="address" onChange={changed} /></td>
+                        <td class="table-danger"><input type="text" required placeholder="" name={data.fname} onChange={changed} /></td>
+                        <td class="table-success"><input type="text" required placeholder="" name={data.lname} onChange={changed} /></td>
+                        <td class="table-danger"><input type="text" required placeholder="" name={data.email} onChange={changed} /></td>
+                        <td class="table-primary"><input type="text" required placeholder="" name={data.address} onChange={changed} /></td>
+                        <td class="table-info"><input type="text" required placeholder="" name={data.phone} onChange={changed} /></td>
 
 
                         <td class="table-light">

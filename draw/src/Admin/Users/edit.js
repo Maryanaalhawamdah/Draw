@@ -67,15 +67,16 @@ return (
 </div>
     <div id="editUmaindiv">
         <form id="form" onSubmit={submit}>
-            <table className="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+            <table className="table table-bordered" style={{width:'70%',marginLeft:'150px'}}>
                 <thead>
                 <tr class="table-dark">
                 <th>Id</th>
-            <th>clientName</th>            
-            <th>Email</th>                      
+            <th>Fname</th> 
+            <th>Lname</th>           
+            <th>Email</th>
             <th>Phone</th>
+            <th>City</th>
             <th>Address</th>
-            <th>Image</th>
             <th>Action</th>
                     </tr>
                 </thead>
@@ -85,12 +86,14 @@ return (
                 
                     
                     <tr>
-                    <td class="table-secondary"><input type="text" value={data.id} name="id" onChange={changed} /></td>
-                        <td class="table-danger"><input type="text" required value={data.clientName || ''} name="username" onChange={changed} /></td>
-                        <td class="table-success"><input type="text" required value={data.email || ''} name="email" onChange={changed} /></td>
-                        <td class="table-info"><input type="text" required value={data.phone || ''} name="phone" onChange={changed} /></td>
-                        <td class="table-primary"><input type="text" required value={data.address || ''} name="address" onChange={changed} /></td>
-                        <td class="table-primary"><input type="text" required value={data.image || ''} name="image" onChange={changed} /></td>
+                    <td class="table-secondary"><input type="text" placeholder={data.id} name="id" onChange={changed} /></td>
+                        <td class="table-danger"><input type="text" required placeholder={data.fname } name="fname" onChange={changed} /></td>
+                        <td class="table-success"><input type="text" required placeholder={data.lname } name="lname" onChange={changed} /></td>
+                        <td class="table-info"><input type="text" required placeholder={data.email } name="email" onChange={changed} /></td>
+                        <td class="table-primary"><input type="text" required placeholder={data.phone } name="phone" onChange={changed} /></td>
+                        <td class="table-primary"><input type="text" required placeholder={data.city } name="city" onChange={changed} /></td>
+
+                        <td class="table-primary"><input type="text" required placeholder={data.address } name="address" onChange={changed} /></td>
 
                         <td class="table-light">
                             <button type="submit" className="btn btn-info add-new">Save</button>

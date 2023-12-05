@@ -1,54 +1,44 @@
-<?php
 
+<?php
 header('Access-Control-Allow-Origin: *');
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS, PUT, DELETE");
 header("Access-Control-Allow-Headers: Content-Disposition, Content-Type, Content-Length, Accept-Encoding");
 header("Content-type: application/json");
 
-include_once("../conn.php");
+require_once '../conn.php';
 
-// Check if the request method is POST
+// Check if the request is a POST request
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-    // Get JSON data from the request body
-    $data = file_get_contents("php://input");
-    $user = json_decode($data, true);
+    $data = json_decode(file_get_contents("php://input"));
 
-    // Check if the required fields are set in the JSON data
-    if (
-        isset($user['clientName']) &&
-        isset($user['email']) &&
-        isset($user['password']) &&
-        isset($user['phone']) &&
-        isset($user['address']) &&
-        isset($user['image'])
-    ) {
-        // Assign values to variables
-        $clientName = $user['clientName'];
-        $email = $user['email'];
-        $password = password_hash($user['password'], PASSWORD_BCRYPT);
-        $phone = $user['phone'];
-        $address = $user['address'];
-        $image = $user['image'];
-        $isAdmin = 0;
+    // Use object notation to access properties of the $data object
+    $fname = $data->fname;
+    $lname = $data->lname;
+    $email = $data->email;
+    $password = password_hash($data->password, PASSWORD_DEFAULT);
+    $phone = $data->phone;
+    $city = $data->city;
+    $address = $data->address;
+    $isAdmin = 0; // Set isAdmin to 0 for regular users
+    
 
-        // Prepare the SQL statement with placeholders
-        $sql = "INSERT INTO users (clientName, email, password,  phone, address, image, isAdmin)
-        VALUES (?, ?, ?, ?, ?, ?, ?)";
-
-        // Prepare and execute the SQL statement with placeholders
-        $stmt = $conn->prepare($sql);
-        // Assuming 'dob' is a required column in your table; adjust the data types accordingly
-        $stmt->bind_param("sssssss", $clientName, $email, $password, $dob, $phone, $address, $image, $isAdmin);
-        
-        if ($stmt->execute()) {
-            echo json_encode(array("message" => "Data inserted successfully."));
-        } else {
-            echo json_encode(array("message" => "Data insertion failed.", "error" => $stmt->error));
+    $response=array();
+    $query="SELECT * FROM `users` WHERE `email`='$email'";
+    $result=$conn->query($query);
+    if($result->num_rows == 0){
+    // Prepare and execute the SQL query to insert the user data into the database
+        $sql="INSERT INTO `users`(`fname`, `lname`, `email`, `password`, `phone`, `city`, `address`, `isAdmin`) VALUES ('$fname','$lname','$email','$password','$phone','$city','$address',0)";
+    
+        if($conn->query($sql)===true){
+            $response['message']="Data stored successfully";
+        }else{
+            $response['message']="Error: ".$sql."<br".$conn->error;
         }
-    } else {
-        echo json_encode(array("message" => "Missing or invalid data in the request."));
+        echo json_encode($response);
+    }else{
+        $response['message']="Email Not Valid";
+        echo json_encode($response);
     }
-} else {
-    echo json_encode(array("message" => "Invalid request method."));
 }
+$conn->close();
 ?>

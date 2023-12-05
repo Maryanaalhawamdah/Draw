@@ -45,7 +45,7 @@ function GetOrders() {
 </div>
     <div id="mainOdiv">
       
-      <table class="table table-bordered" style={{width:'70%',marginLeft:'100px'}}>
+      <table class="table table-bordered" style={{width:'50%',marginLeft:'220px'}}>
         <thead>
           <tr class="table-dark">
             <th>Id</th>

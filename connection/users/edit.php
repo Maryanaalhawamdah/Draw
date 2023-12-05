@@ -18,20 +18,22 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $customer = json_decode($data, true);
 
     if (
-        isset($customer['clientName']) &&
+        isset($customer['fname']) &&
+        isset($customer['lname']) &&
         isset($customer['email']) &&
         isset($customer['phone'])&&
-        isset($customer['address']) &&
-        isset($customer['image'])
+        isset($customer['city']) &&
+        isset($customer['address'])
         
     ) {
-        $clientName = $customer['clientName'];       
+        $fname = $customer['fname'];
+        $lname = $customer['lname'];        
         $email = $customer['email'];
         $phone = $customer['phone'];
+        $city = $customer['city'];
         $address = $customer['address'];
-        $image = $customer['image'];
 
-        $sql = "UPDATE users SET clientName = '$clientName',  email = '$email',phone = '$phone', address = '$address',image='$image'  WHERE id = $id";
+        $sql = "UPDATE users SET fname = '$fname',lname ='$lname' , email = '$email',phone = '$phone',city='$city', address = '$address'  WHERE id = $id";
 
         try {
             $conn->exec($sql);
